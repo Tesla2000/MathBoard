@@ -1,8 +1,4 @@
-import turtle
-
+from turtle import width
 
 class Config:
-    screen = turtle.Screen()
-    cursor = turtle.Turtle()
-    cursor.width(5)
-    screen.mainloop()
+    width(3)
