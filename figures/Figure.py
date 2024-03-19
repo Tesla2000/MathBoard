@@ -1,15 +1,19 @@
 from abc import ABC, abstractmethod
-from turtle import pu, goto, pd, setheading, pos, fd, rt, lt
+from turtle import pu, goto, pd, setheading, pos, fd
 
 from Config import Config
 
 
 class Figure(ABC):
-    def __init__(self, x_coordinate: int = None, y_coordinate: int = None):
-        self.x_coordinate = x_coordinate
-        self.y_coordinate = y_coordinate
+    def __init__(self, width: int = Config.default_width, height: int = Config.default_height):
+        self.width = width
+        self.height = height
 
-    def draw(self, width: int, height: int = 50, border_width: int = None, border_height: int = None):
+    def draw(self, width: int = None, height: int = None, border_width: int = None, border_height: int = None):
+        if width is None:
+            width = self.width
+        if height is None:
+            height = self.height
         point = pos()
         pu()
         if border_width is None:
@@ -23,7 +27,11 @@ class Figure(ABC):
         goto(point)
         pd()
         setheading(0)
+        pu()
 
     @abstractmethod
     def _draw(self, width: int, height: int, border_width: int, border_height: int):
         pass
+
+    def __repr__(self):
+        return f"{type(self).__name__}"
