@@ -6,7 +6,7 @@ from figures.Figure import Figure
 class One(Figure):
     def _draw(self, width: int, height: int, border_width: int, border_height: int):
         pu()
-        fd(width)
+        fd(width // 2)
         pd()
         rt(90)
         fd(height)
