@@ -1,16 +1,19 @@
-from turtle import pu, goto, pd, setheading, pos, fd, rt, bk, lt
+from turtle import fd, rt, bk, lt
 
 from figures.Figure import Figure
 
 
 class Six(Figure):
-    def _draw(self, d: int):
-        fd(d)
-        bk(d)
+    def _draw(self, width: int, height: int, border_width: int, border_height: int):
+        fd(width)
+        bk(width)
         rt(90)
-        fd(d * 2)
-        for i in range(3):
-            lt(90)
-            fd(d)
+        fd(height)
+        lt(90)
+        fd(width)
+        lt(90)
+        fd(height // 2)
+        lt(90)
+        fd(width)
         rt(90)
-        fd(d)
+        fd(height // 2)

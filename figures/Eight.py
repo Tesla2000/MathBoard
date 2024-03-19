@@ -1,16 +1,19 @@
-from turtle import pu, goto, pd, setheading, pos, fd, rt, bk, lt
+from turtle import fd, rt, bk, lt
 
 from figures.Figure import Figure
 
 
 class Eight(Figure):
-    def _draw(self, d: int):
-        fd(d)
+    def _draw(self, width: int, height: int, border_width: int, border_height: int):
+        fd(width)
         rt(90)
-        fd(d * 2)
-        for i in range(3):
-            rt(90)
-            fd(d)
-        bk(d)
+        fd(height)
+        rt(90)
+        fd(width)
+        rt(90)
+        fd(height // 2)
+        rt(90)
+        fd(width)
+        bk(width)
         lt(90)
-        fd(d)
+        fd(height // 2)

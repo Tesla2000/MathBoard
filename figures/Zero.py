@@ -1,14 +1,14 @@
-from turtle import pu, goto, pd, setheading, pos, fd, rt, bk, lt
+from turtle import fd, rt
 
 from figures.Figure import Figure
 
 
 class Zero(Figure):
-    def _draw(self, d: int):
-        fd(d)
+    def _draw(self, width: int, height: int, border_width: int, border_height: int):
+        fd(width)
         rt(90)
-        fd(d * 2)
+        fd(height)
         rt(90)
-        fd(d)
+        fd(width)
         rt(90)
-        fd(d * 2)
+        fd(height)
