@@ -1,4 +1,4 @@
-from turtle import pu, fd, rt, bk, lt
+from recording.save_turtle import pu, fd, rt, bk, lt
 
 from figures.Figure import Figure
 

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from turtle import pu, goto, pd, setheading, pos
+from recording.save_turtle import pu, goto, pd, setheading, pos
 
 from Config import Config
 

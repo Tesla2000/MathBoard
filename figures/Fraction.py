@@ -1,4 +1,4 @@
-from turtle import pu, pd, fd, rt, bk, lt, position
+from recording.save_turtle import pu, pd, fd, rt, bk, lt, pos
 
 from Config import Config
 from figures import moveto
@@ -12,9 +12,9 @@ class Fraction(Figure):
         self.denominator = denominator
 
     def _draw(self, width: int, height: int):
-        pos = position()
+        position = pos()
         self.numerator.draw(width, height // 2)
-        moveto(*pos)
+        moveto(*position)
         pu()
         rt(90)
         fd(height // 2)

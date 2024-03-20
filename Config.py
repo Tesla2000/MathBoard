@@ -1,3 +1,4 @@
+import shutil
 from pathlib import Path
 from turtle import width
 
@@ -7,12 +8,16 @@ class Config:
     default_width = 50
     minimal_border_width = 3
     width(3)
-    start_x = -640
+    # screensize(1000, 600)
+    # start_x = -640
+    start_x = -300
     start_y = 280
-    fps = 30
+    frame_rate = 30
 
     root = Path(__file__).parent
     image_files = root / 'images'
-    video_files = root / 'videos'
-    image_files.mkdir(exist_ok=True)
-    video_files.mkdir(exist_ok=True)
+    output_videos = root / 'output_videos'
+    temporary_picture = root / ".ps"
+    shutil.rmtree(image_files)
+    image_files.mkdir()
+    output_videos.mkdir(exist_ok=True)

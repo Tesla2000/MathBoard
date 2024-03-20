@@ -1,5 +1,4 @@
-from math import sqrt
-from turtle import fd, rt, pu, pd, lt, bk, Screen, getscreen, dot
+from recording.save_turtle import fd, rt, pu, pd, lt, bk, dot
 
 from figures.Figure import Figure
 

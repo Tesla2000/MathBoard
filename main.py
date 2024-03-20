@@ -1,5 +1,3 @@
-import threading
-
 from Config import Config
 from figures import moveto
 from figures.Divided import Divided
@@ -18,11 +16,9 @@ from figures.Three import Three
 from figures.Times import Times
 from figures.Two import Two
 from figures.Zero import Zero
-from save_screen import save_screen
+from recording.concat2video import concat2video
 
 if __name__ == '__main__':
-    recording_thread = threading.Thread(target=save_screen)
-    recording_thread.start()
     start_x, y_coor = Config.start_x, Config.start_y
     action_space = [
         [Divided(), Times(), Sequence(One(), Plus(), Fraction(Two(), Three()), Four(), width=300, height=100)],
@@ -38,5 +34,4 @@ if __name__ == '__main__':
             figure.draw()
             x_coor += figure.width
         y_coor -= max(figure.height for figure in row)
-    record = False
-    recording_thread.join()
+    concat2video()
