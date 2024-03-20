@@ -4,7 +4,7 @@ from figures.Figure import Figure
 
 
 class One(Figure):
-    def _draw(self, width: int, height: int, border_width: int, border_height: int):
+    def _draw(self, width: int, height: int):
         pu()
         fd(width // 2)
         pd()

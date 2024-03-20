@@ -7,6 +7,8 @@ class Config:
     default_width = 50
     minimal_border_width = 3
     width(3)
+    start_x = -640
+    start_y = 280
     fps = 30
 
     root = Path(__file__).parent

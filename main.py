@@ -1,5 +1,6 @@
 import threading
 
+from Config import Config
 from figures import moveto
 from figures.Divided import Divided
 from figures.Eight import Eight
@@ -22,7 +23,7 @@ from save_screen import save_screen
 if __name__ == '__main__':
     recording_thread = threading.Thread(target=save_screen)
     recording_thread.start()
-    start_x, y_coor = -640, 280
+    start_x, y_coor = Config.start_x, Config.start_y
     action_space = [
         [Divided(), Times(), Sequence(One(), Plus(), Fraction(Two(), Three()), Four(), width=300, height=100)],
         [Fraction(One(), Seven()), One()],

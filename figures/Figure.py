@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from turtle import pu, goto, pd, setheading, pos, fd
+from turtle import pu, goto, pd, setheading, pos
 
 from Config import Config
 
@@ -15,14 +15,12 @@ class Figure(ABC):
         if height is None:
             height = self.height
         point = pos()
-        pu()
         if border_width is None:
-            border_width = max(Config.minimal_border_width, width // 20)
+            border_width = max(Config.minimal_border_width, width // 10)
         if border_height is None:
             border_height = max(Config.minimal_border_width, height // 20)
-        fd(border_width)
         pd()
-        self._draw(width - 2 * border_width, height - 2 * border_height, border_width, border_height)
+        self._draw(width - border_width, height - border_height)
         pu()
         goto(point)
         pd()
@@ -30,7 +28,7 @@ class Figure(ABC):
         pu()
 
     @abstractmethod
-    def _draw(self, width: int, height: int, border_width: int, border_height: int):
+    def _draw(self, width: int, height: int):
         pass
 
     def __repr__(self):

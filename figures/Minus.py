@@ -4,7 +4,7 @@ from figures.Figure import Figure
 
 
 class Minus(Figure):
-    def _draw(self, width: int, height: int, border_width: int, border_height: int):
+    def _draw(self, width: int, height: int):
         rt(90)
         pu()
         fd(height // 2)

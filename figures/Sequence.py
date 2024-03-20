@@ -8,7 +8,7 @@ class Sequence(Figure):
         super().__init__(width, height)
         self.figures = figures
 
-    def _draw(self, width: int, height: int, border_width: int, border_height: int):
+    def _draw(self, width: int, height: int):
         for figure in self.figures:
             figure.draw(width // len(self.figures), height)
             pu()

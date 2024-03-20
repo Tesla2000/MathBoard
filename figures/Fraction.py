@@ -11,7 +11,7 @@ class Fraction(Figure):
         self.numerator = numerator
         self.denominator = denominator
 
-    def _draw(self, width: int, height: int, border_width: int, border_height: int):
+    def _draw(self, width: int, height: int):
         pos = position()
         self.numerator.draw(width, height // 2)
         moveto(*pos)
