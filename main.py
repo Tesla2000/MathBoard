@@ -35,4 +35,5 @@ if __name__ == '__main__':
         y_coor -= max(figure.height for figure in row)
     for figure in (figure for row in action_space for figure in row):
         figure.draw()
+        figure.undo()
     concat2video()

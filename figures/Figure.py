@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from turtle import color
 
 from figures import moveto
 from recording.save_turtle import pu, goto, pd, setheading, pos
@@ -31,6 +32,11 @@ class Figure(ABC):
         pd()
         setheading(0)
         pu()
+
+    def undo(self, width: int = None, height: int = None, border_width: int = None, border_height: int = None):
+        color("white")
+        self.draw(width=width, height=height, border_width=border_width, border_height=border_height)
+        color("black")
 
     @abstractmethod
     def _draw(self, width: int, height: int):
