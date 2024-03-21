@@ -1,5 +1,4 @@
 from Config import Config
-from figures import moveto
 from figures.Divided import Divided
 from figures.Eight import Eight
 from figures.Five import Five
@@ -21,7 +20,7 @@ from recording.concat2video import concat2video
 if __name__ == '__main__':
     start_x, y_coor = Config.start_x, Config.start_y
     action_space = [
-        [Divided(), Times(), Sequence(One(), Plus(), Fraction(Two(), Three()), Four(), width=300, height=100)],
+        [Seven(), Divided(), Times(), Sequence(One(), Plus(), Fraction(Two(), Three()), Four(), width=300, height=100)],
         [Fraction(One(), Seven()), One()],
         [Plus(), Minus(),],
         [Zero(), One(), Two(), Three(), Four(), Five(), Six(), Seven(), Eight(), Nine(),],
@@ -30,8 +29,10 @@ if __name__ == '__main__':
     for row in action_space:
         x_coor = start_x
         for figure in row:
-            moveto(x_coor, y_coor)
-            figure.draw()
+            figure.x_coor = x_coor
+            figure.y_coor = y_coor
             x_coor += figure.width
         y_coor -= max(figure.height for figure in row)
+    for figure in (figure for row in action_space for figure in row):
+        figure.draw()
     concat2video()

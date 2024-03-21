@@ -1,8 +1,7 @@
-from recording.save_turtle import pu, pd, fd, rt, bk, lt, pos
-
 from Config import Config
 from figures import moveto
 from figures.Figure import Figure
+from recording.save_turtle import pu, pd, fd, rt, lt
 
 
 class Fraction(Figure):
@@ -12,21 +11,17 @@ class Fraction(Figure):
         self.denominator = denominator
 
     def _draw(self, width: int, height: int):
-        position = pos()
-        self.numerator.draw(width, height // 2)
-        moveto(*position)
+        self.numerator.x_coor = self.x_coor
+        self.numerator.y_coor = self.y_coor
+        self.numerator.draw(width, height // 2 - max(Config.minimal_border_width, height // 20))
+        moveto(self.x_coor, self.y_coor)
         pu()
         rt(90)
         fd(height // 2)
         pd()
         lt(90)
-        fd(width)
-        bk(width)
-        pu()
-        rt(90)
-        fd(height // 20)
-        lt(90)
-        fd(width // 20)
-        pd()
+        fd(width - max(Config.minimal_border_width, width // 10))
+        self.denominator.x_coor = self.x_coor
+        self.denominator.y_coor = self.y_coor - height // 2 - max(Config.minimal_border_width, height // 20)
         self.denominator.draw(width, height // 2)
         pass

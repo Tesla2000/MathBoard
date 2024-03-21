@@ -6,11 +6,11 @@ from turtle import width
 class Config:
     default_height = 100
     default_width = 50
-    minimal_border_width = 3
+    minimal_border_width = 1
     width(3)
     # screensize(1000, 600)
-    # start_x = -640
-    start_x = -300
+    start_x = -640
+    # start_x = -300
     start_y = 280
     frame_rate = 30
 
