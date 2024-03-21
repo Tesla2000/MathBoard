@@ -1,6 +1,7 @@
 from Config import Config
 from figures.Divided import Divided
 from figures.Eight import Eight
+from figures.Equals import Equals
 from figures.Five import Five
 from figures.Four import Four
 from figures.Fraction import Fraction
@@ -20,7 +21,7 @@ from recording.concat2video import concat2video
 if __name__ == '__main__':
     start_x, y_coor = Config.start_x, Config.start_y
     action_space = [
-        [Seven(), Divided(), Times(), Sequence(One(), Plus(), Fraction(Two(), Three()), Four(), width=300, height=100)],
+        [Equals(), Seven(), Divided(), Times(), Sequence(One(), Plus(), Fraction(Two(), Three()), Four(), width=300, height=100)],
         [Fraction(One(), Seven()), One()],
         [Plus(), Minus(),],
         [Zero(), One(), Two(), Three(), Four(), Five(), Six(), Seven(), Eight(), Nine(),],
