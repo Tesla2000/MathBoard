@@ -4,3 +4,9 @@
 /sandbox.py
 /.ps
 /output_videos/
+/open_ai_token
+/output_audios/
+/last_frames/
+/.mp4
+/final_videos/
+/first_frame.jpg

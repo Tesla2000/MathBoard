@@ -1,5 +1,5 @@
 from math import pi, atan, sqrt
-from recording.save_turtle import fd, rt, bk, setheading
+from recording.record_turtle import fd, rt, bk, setheading
 
 from figures.Figure import Figure
 

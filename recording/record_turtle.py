@@ -2,10 +2,13 @@ import turtle
 
 from recording.save_screen import save_screen
 
+record = True
+
 
 def _wrapper(function):
     def inner(*args, **kwargs):
-        save_screen()
+        if record:
+            save_screen()
         return function(*args, **kwargs)
 
     return inner
