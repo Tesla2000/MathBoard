@@ -14,7 +14,7 @@ def save_screen(path: Path = None):
         if img.mode != 'RGB':
             img = img.convert('RGB')
         if path is None:
-            img.save(Config.image_files / f'{index}.jpg')
+            img.save(Config.images / f'{index}.jpg')
         else:
             img.save(path)
         index += 1

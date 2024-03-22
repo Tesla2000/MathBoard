@@ -1,4 +1,4 @@
-from recording.save_turtle import fd, rt
+from recording.record_turtle import fd, rt
 
 from figures.Figure import Figure
 

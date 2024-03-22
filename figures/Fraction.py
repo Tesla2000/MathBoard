@@ -1,7 +1,7 @@
 from Config import Config
 from figures import moveto
 from figures.Figure import Figure
-from recording.save_turtle import pu, pd, fd, rt, lt
+from recording.record_turtle import pu, pd, fd, rt, lt
 
 
 class Fraction(Figure):

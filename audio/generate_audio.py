@@ -5,7 +5,7 @@ client = OpenAI()
 
 
 def generate_audio(text_to_translate: str):
-    speech_file_path = Config.output_audios.joinpath(f'{text_to_translate}.mp3')
+    speech_file_path = Config.output_audios.joinpath(Config.audio_name_normalization(text_to_translate))
     if speech_file_path.exists():
         return
     response = client.audio.speech.create(

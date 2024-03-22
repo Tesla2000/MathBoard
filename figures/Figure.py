@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from turtle import color
 
 from figures import moveto
-from recording.save_turtle import pu, goto, pd, setheading, pos
+from recording.record_turtle import pu, goto, pd, setheading, pos
 
 from Config import Config
 
