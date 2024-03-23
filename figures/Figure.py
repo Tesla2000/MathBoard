@@ -1,18 +1,23 @@
 from abc import ABC, abstractmethod
 from turtle import color
 
-from figures import moveto
-from recording.record_turtle import pu, goto, pd, setheading, pos
-
 from Config import Config
+from figures import moveto
+from recording.record_turtle import pu, pd
 
 
 class Figure(ABC):
-    def __init__(self, width: int = Config.default_width, height: int = Config.default_height, x_coor: int = None, y_coor: int = None):
+    border = True
+    width = Config.default_width
+    height = Config.default_height
+
+    def __init__(self, width: int = None, height: int = None, x_coor: int = None, y_coor: int = None):
         self.x_coor = x_coor
         self.y_coor = y_coor
-        self.width = width
-        self.height = height
+        if height is not None:
+            self.height = height
+        if width is not None:
+            self.width = width
 
     def draw(self, width: int = None, height: int = None, border_width: int = None, border_height: int = None):
         moveto(self.x_coor, self.y_coor)
@@ -20,17 +25,12 @@ class Figure(ABC):
             width = self.width
         if height is None:
             height = self.height
-        point = pos()
-        if border_width is None:
+        if border_width is None and self.border is True:
             border_width = max(Config.minimal_border_width, width // 10)
-        if border_height is None:
+        if border_height is None and self.border is True:
             border_height = max(Config.minimal_border_width, height // 20)
         pd()
-        self._draw(width - border_width, height - border_height)
-        pu()
-        goto(point)
-        pd()
-        setheading(0)
+        self._draw(width - border_width or 0, height - border_height or 0)
         pu()
 
     def undo(self, width: int = None, height: int = None, border_width: int = None, border_height: int = None):

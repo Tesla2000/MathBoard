@@ -1,4 +1,4 @@
-from recording.record_turtle import fd, rt, bk
+from recording.record_turtle import fd, rt, bk, lt
 
 from figures.Figure import Figure
 
@@ -11,7 +11,7 @@ class Three(Figure):
         rt(90)
         fd(width)
         bk(width)
+        lt(90)
+        fd(height - height // 2)
         rt(90)
-        bk(height // 2)
-        rt(90)
-        bk(width)
+        fd(width)

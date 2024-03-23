@@ -12,6 +12,6 @@ class Five(Figure):
         lt(90)
         fd(width)
         rt(90)
-        fd(height // 2)
+        fd(height - height // 2)
         rt(90)
         fd(width)

@@ -1,12 +1,12 @@
-from recording.record_turtle import pu, pd, fd, rt, bk
-
 from figures.Figure import Figure
+from recording.record_turtle import pu, pd, fd, rt, bk
 
 
 class One(Figure):
+
     def _draw(self, width: int, height: int):
         pu()
-        fd(width // 2)
+        fd(3 * width // 4)
         pd()
         rt(90)
         fd(height)
