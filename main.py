@@ -1,5 +1,6 @@
 from Config import Config
 from audio.generate_audio import generate_audio
+from figures.Coma import Coma
 from figures.Divided import Divided
 from figures.Eight import Eight
 from figures.Equals import Equals
@@ -14,7 +15,7 @@ from figures.Sequence import Sequence
 from figures.Seven import Seven
 from figures.Six import Six
 from figures.Three import Three
-from figures.X import Times
+from figures.Times import Times
 from figures.Two import Two
 from figures.Zero import Zero
 from recording.concat2video import concat2video
@@ -22,7 +23,8 @@ from recording.concat_videos import concat_videos
 
 if __name__ == '__main__':
     figures = [
-        [Equals(), Seven(), Divided(), Times(),
+        [Zero(), Coma(), Eight(), ],
+        [Equals(), Seven(), Divided(), Times(), Eight(),
          Sequence(One(), Plus(), Fraction(Two(), Three()), Four(), width=300, height=100)],
         [Fraction(One(), Seven()), One()],
         [Plus(), Minus(), ],

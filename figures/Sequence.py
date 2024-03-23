@@ -2,6 +2,8 @@ from figures.Figure import Figure
 
 
 class Sequence(Figure):
+    border_height = False
+
     def __init__(self, *figures: Figure, width: int = None, height: int = None):
         super().__init__(width, height)
         self.figures = figures

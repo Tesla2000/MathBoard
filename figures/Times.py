@@ -4,7 +4,7 @@ from recording.record_turtle import fd, rt, pu, lt, dot
 
 
 class Times(Figure):
-    width = Config.default_width // 10
+    width = Config.default_width // 6
 
     def _draw(self, width: int, height: int):
         rt(90)

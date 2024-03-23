@@ -7,7 +7,8 @@ from recording.record_turtle import pu, pd
 
 
 class Figure(ABC):
-    border = True
+    border_width = True
+    border_height = True
     width = Config.default_width
     height = Config.default_height
 
@@ -25,12 +26,12 @@ class Figure(ABC):
             width = self.width
         if height is None:
             height = self.height
-        if border_width is None and self.border is True:
+        if border_width is None and self.border_width is True:
             border_width = max(Config.minimal_border_width, width // 10)
-        if border_height is None and self.border is True:
-            border_height = max(Config.minimal_border_width, height // 20)
+        if border_height is None and self.border_height is True:
+            border_height = max(Config.minimal_border_width, height // 10)
         pd()
-        self._draw(width - border_width or 0, height - border_height or 0)
+        self._draw(width - (border_width or 0), height - (border_height or 0))
         pu()
 
     def undo(self, width: int = None, height: int = None, border_width: int = None, border_height: int = None):

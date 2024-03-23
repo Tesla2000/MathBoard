@@ -17,7 +17,7 @@ class Config(_VideoElements):
     default_height = 100
     default_width = 50
     symbol_write_speed = 10
-    minimal_border_width = 3
+    minimal_border_width = 4
     width(3)
     # screensize(1000, 600)
     start_x = -640
