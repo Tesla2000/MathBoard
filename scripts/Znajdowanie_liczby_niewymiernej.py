@@ -10,6 +10,7 @@ from figures.Fraction import Fraction
 from figures.Minus import Minus
 from figures.Nine import Nine
 from figures.One import One
+from figures.Parenthesized import Parenthesized
 from figures.Plus import Plus
 from figures.RaiseToPower import RaiseToPower
 from figures.Root import Root
@@ -26,13 +27,14 @@ Config.texts_to_translate = (
     "Kolejnym krokiem jest zamiana pierwiastka na potęgę.",
     "Dziękuję za uwagę.",
 )
+row_height = 200
 figures = [
     [
-        Root(Fraction(Eight(), Sequence(Four(), Nine())), width=200, height=200),
-        Equals(height=200),
-        Root(Fraction(RaiseToPower(Two(), Three()), RaiseToPower(Seven(), Two())), width=200, height=200),
-        Equals(height=200),
-        RaiseToPower(Fraction(RaiseToPower(Two(), Three()), RaiseToPower(Seven(), Two())), Fraction(One(centered=True), Two()),  width=200, height=200),
+        Root(Fraction(Eight(), Sequence(Four(), Nine())), width=200, height=row_height),
+        Equals(height=row_height),
+        Root(Fraction(RaiseToPower(Two(), Three()), RaiseToPower(Seven(), Two())), width=200, height=row_height),
+        Equals(height=row_height),
+        RaiseToPower(Parenthesized(Fraction(RaiseToPower(Two(), Three()), RaiseToPower(Seven(), Two()))), Fraction(One(centered=True), Two()),  width=200, height=200),
     ],
 ]
 start_x, y_coor = Config.start_x, Config.start_y
@@ -46,7 +48,7 @@ for row in figures:
         x_coor += figure.width
     y_coor -= max(figure.height for figure in row)
 action_spaces = [
-    # [figures[0][0].draw],
-    # [figures[0][1].draw, figures[0][2].draw, ],
+    [figures[0][0].draw],
+    [figures[0][1].draw, figures[0][2].draw, ],
     [figures[0][3].draw, figures[0][4].draw, ],
 ]

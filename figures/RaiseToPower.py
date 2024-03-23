@@ -17,6 +17,6 @@ class RaiseToPower(Figure):
         self.exponent.y_coor = self.y_coor
         self.exponent.x_coor = self.x_coor + width * 3 // 4
         self.exponent.width = width // 4
-        self.exponent.height = height // 4
+        self.exponent.height = height // 2
         self.exponent.draw()
 
