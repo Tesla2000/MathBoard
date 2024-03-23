@@ -11,7 +11,9 @@ class Sequence(Figure):
     def _draw(self, width: int, height: int):
         x_coor = self.x_coor
         total_width = sum(figure.width for figure in self.figures)
-        element_widths = tuple((figure.width * width) // total_width for figure in self.figures)
+        element_widths = tuple(
+            (figure.width * width) // total_width for figure in self.figures
+        )
         for figure, element_width in zip(self.figures, element_widths):
             figure.x_coor = x_coor
             x_coor += element_width

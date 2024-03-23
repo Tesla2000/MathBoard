@@ -7,8 +7,13 @@ from recording.record_turtle import pu, rt, fd, lt, pd, pos, setheading
 
 
 class Root(Figure):
-
-    def __init__(self, radical: Figure, index: Figure = None, width: int = None, height: int = None):
+    def __init__(
+        self,
+        radical: Figure,
+        index: Figure = None,
+        width: int = None,
+        height: int = None,
+    ):
         super().__init__(width, height)
         self.index = index
         self.radical = radical

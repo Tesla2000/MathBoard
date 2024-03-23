@@ -14,4 +14,3 @@ class Seven(Figure):
         setheading(0)
         fd(width // 4)
         bk(width // 2)
-

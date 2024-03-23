@@ -12,6 +12,9 @@ class _VideoElements:
 
 
 class Config(_VideoElements):
+    font_size = 12
+    font_path = "DejaVuSans"
+    color = "black"
     default_height = 100
     default_width = 50
     symbol_write_speed = 10
@@ -22,20 +25,20 @@ class Config(_VideoElements):
     # start_x = -300
     start_y = 280
 
-    model = "tts-1-hd"
-    voice = "nova"
+    model = "tts-1"
+    voice = "alloy"
 
     root = Path(__file__).parent
-    open_ai_token = root.joinpath('open_ai_token').read_text()
+    open_ai_token = root.joinpath("open_ai_token").read_text()
     os.environ.setdefault("OPENAI_API_KEY", open_ai_token)
     temporary_picture = root / ".ps"
-    temp_filename = str(root / '.mp4')
-    images = root / 'images'
-    output_videos = root / 'output_videos'
-    output_audios = root / 'output_audios'
-    last_frames = root / 'last_frames'
-    first_frame = root / 'first_frame.jpg'
-    final_videos = root / 'final_videos'
+    temp_filename = str(root / ".mp4")
+    images = root / "images"
+    output_videos = root / "output_videos"
+    output_audios = root / "output_audios"
+    last_frames = root / "last_frames"
+    first_frame = root / "first_frame.jpg"
+    final_videos = root / "final_videos"
     scripts_package = root / "scripts"
     output_videos.mkdir(exist_ok=True)
     images.mkdir(exist_ok=True)
@@ -52,16 +55,21 @@ class Config(_VideoElements):
     @staticmethod
     def audio_name_normalization(text: str) -> str:
         polish_to_english = {
-            'ą': 'a',
-            'ć': 'c',
-            'ę': 'e',
-            'ł': 'l',
-            'ń': 'n',
-            'ó': 'o',
-            'ś': 's',
-            'ż': 'z',
-            'ź': 'z',
-            ' ': '_',
+            "ą": "a",
+            "ć": "c",
+            "ę": "e",
+            "ł": "l",
+            "ń": "n",
+            "ó": "o",
+            "ś": "s",
+            "ż": "z",
+            "ź": "z",
+            " ": "_",
         }
-        return ''.join(
-            polish_to_english.get(letter, letter) for letter in re.sub(r'[,\.?!]', '', text.strip()).lower()) + ".mp3"
+        return (
+            "".join(
+                polish_to_english.get(letter, letter)
+                for letter in re.sub(r"[,.?!]", "", text.strip()).lower()
+            )
+            + ".mp3"
+        )

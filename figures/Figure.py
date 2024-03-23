@@ -3,7 +3,7 @@ from turtle import color
 
 from Config import Config
 from figures import moveto
-from recording.record_turtle import pu, pd, fd, rt, lt
+from recording.record_turtle import pu, pd
 
 
 class Figure(ABC):
@@ -12,7 +12,13 @@ class Figure(ABC):
     width = Config.default_width
     height = Config.default_height
 
-    def __init__(self, width: int = None, height: int = None, x_coor: int = None, y_coor: int = None):
+    def __init__(
+        self,
+        width: int = None,
+        height: int = None,
+        x_coor: int = None,
+        y_coor: int = None,
+    ):
         self.x_coor = x_coor
         self.y_coor = y_coor
         if height is not None:
@@ -20,7 +26,13 @@ class Figure(ABC):
         if width is not None:
             self.width = width
 
-    def draw(self, width: int = None, height: int = None, border_width: int = None, border_height: int = None):
+    def draw(
+        self,
+        width: int = None,
+        height: int = None,
+        border_width: int = None,
+        border_height: int = None,
+    ):
         moveto(self.x_coor, self.y_coor)
         if width is None:
             width = self.width
@@ -34,10 +46,21 @@ class Figure(ABC):
         self._draw(width - (border_width or 0), height - (border_height or 0))
         pu()
 
-    def undo(self, width: int = None, height: int = None, border_width: int = None, border_height: int = None):
+    def undo(
+        self,
+        width: int = None,
+        height: int = None,
+        border_width: int = None,
+        border_height: int = None,
+    ):
         color("white")
-        self.draw(width=width, height=height, border_width=border_width, border_height=border_height)
-        color("black")
+        self.draw(
+            width=width,
+            height=height,
+            border_width=border_width,
+            border_height=border_height,
+        )
+        color(Config.color)
 
     @abstractmethod
     def _draw(self, width: int, height: int):

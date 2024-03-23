@@ -3,8 +3,9 @@ from figures.Figure import Figure
 
 
 class RaiseToPower(Figure):
-
-    def __init__(self, base: Figure, exponent: Figure, width: int = None, height: int = None):
+    def __init__(
+        self, base: Figure, exponent: Figure, width: int = None, height: int = None
+    ):
         super().__init__(width, height)
         self.base = base
         self.exponent = exponent
@@ -20,4 +21,3 @@ class RaiseToPower(Figure):
         self.exponent.width = width // 4
         self.exponent.height = height // 2
         self.exponent.draw()
-
