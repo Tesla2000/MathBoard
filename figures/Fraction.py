@@ -24,4 +24,3 @@ class Fraction(Figure):
         self.denominator.x_coor = self.x_coor
         self.denominator.y_coor = self.y_coor - height // 2 - max(Config.minimal_border_width, height // 20)
         self.denominator.draw(width, height // 2)
-        pass

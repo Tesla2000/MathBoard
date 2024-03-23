@@ -16,13 +16,13 @@ class _VideoElements:
 class Config(_VideoElements):
     default_height = 100
     default_width = 50
-    minimal_border_width = 1
+    symbol_write_speed = 10
+    minimal_border_width = 4
     width(3)
     # screensize(1000, 600)
     start_x = -640
     # start_x = -300
     start_y = 280
-    frame_rate = 30
 
     root = Path(__file__).parent
     open_ai_token = root.joinpath('open_ai_token').read_text()

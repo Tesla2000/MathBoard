@@ -11,6 +11,6 @@ class Two(Figure):
         lt(90)
         bk(width)
         lt(90)
-        bk(height // 2)
+        bk(height - height // 2)
         lt(90)
         bk(width)

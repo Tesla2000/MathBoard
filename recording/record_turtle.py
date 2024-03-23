@@ -7,9 +7,10 @@ record = True
 
 def _wrapper(function):
     def inner(*args, **kwargs):
+        result = function(*args, **kwargs)
         if record:
             save_screen()
-        return function(*args, **kwargs)
+        return result
 
     return inner
 
