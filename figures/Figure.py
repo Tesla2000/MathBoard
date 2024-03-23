@@ -3,7 +3,7 @@ from turtle import color
 
 from Config import Config
 from figures import moveto
-from recording.record_turtle import pu, pd, fd, rt, lt
+from recording.record_turtle import pu, pd
 
 
 class Figure(ABC):
@@ -37,7 +37,7 @@ class Figure(ABC):
     def undo(self, width: int = None, height: int = None, border_width: int = None, border_height: int = None):
         color("white")
         self.draw(width=width, height=height, border_width=border_width, border_height=border_height)
-        color("black")
+        color(Config.color)
 
     @abstractmethod
     def _draw(self, width: int, height: int):

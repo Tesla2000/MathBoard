@@ -12,6 +12,9 @@ class _VideoElements:
 
 
 class Config(_VideoElements):
+    font_size = 12
+    font_path = "DejaVuSans"
+    color = "black"
     default_height = 100
     default_width = 50
     symbol_write_speed = 10
@@ -64,4 +67,4 @@ class Config(_VideoElements):
             ' ': '_',
         }
         return ''.join(
-            polish_to_english.get(letter, letter) for letter in re.sub(r'[,\.?!]', '', text.strip()).lower()) + ".mp3"
+            polish_to_english.get(letter, letter) for letter in re.sub(r'[,.?!]', '', text.strip()).lower()) + ".mp3"

@@ -1,16 +1,13 @@
 import turtle
 
+from PassedVariables import PassedVariables
 from recording.save_screen import save_screen
-
-
-class Record:
-    record = False
 
 
 def _record_wrapper(function):
     def inner(*args, **kwargs):
         result = function(*args, **kwargs)
-        if Record.record:
+        if PassedVariables.record:
             save_screen()
         return result
 
@@ -19,7 +16,7 @@ def _record_wrapper(function):
 
 def _stop_recording_wrapper(function):
     def inner(*args, **kwargs):
-        Record.record = False
+        PassedVariables.record = False
         return function(*args, **kwargs)
 
     return inner
@@ -27,7 +24,7 @@ def _stop_recording_wrapper(function):
 
 def _start_recording_wrapper(function):
     def inner(*args, **kwargs):
-        Record.record = True
+        PassedVariables.record = True
         return function(*args, **kwargs)
 
     return inner
