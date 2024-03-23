@@ -23,6 +23,9 @@ class Config(_VideoElements):
     # start_x = -300
     start_y = 280
 
+    model = "tts-1-hd"
+    voice = "onyx"
+
     root = Path(__file__).parent
     open_ai_token = root.joinpath('open_ai_token').read_text()
     os.environ.setdefault("OPENAI_API_KEY", open_ai_token)
