@@ -7,17 +7,18 @@ from recording.record_turtle import pu, rt, fd, lt, pd, pos, setheading
 
 class Root(Figure):
 
-    def __init__(self, index: Figure, radical: Figure, width: int = None, height: int = None):
+    def __init__(self, radical: Figure, index: Figure = None, width: int = None, height: int = None):
         super().__init__(width, height)
         self.index = index
         self.radical = radical
 
     def _draw(self, width: int, height: int):
-        self.index.x_coor = self.x_coor
-        self.index.y_coor = self.y_coor
-        self.index.width = self.height // 4
-        self.index.height = self.height // 2
-        self.index.draw()
+        if self.index is not None:
+            self.index.x_coor = self.x_coor
+            self.index.y_coor = self.y_coor
+            self.index.width = self.height // 4
+            self.index.height = self.height // 2
+            self.index.draw()
         moveto(self.x_coor, self.y_coor)
         pu()
         rt(90)

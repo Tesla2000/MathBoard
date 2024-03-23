@@ -11,6 +11,7 @@ from figures.Minus import Minus
 from figures.Nine import Nine
 from figures.One import One
 from figures.Plus import Plus
+from figures.RaiseToPower import RaiseToPower
 from figures.Root import Root
 from figures.Sequence import Sequence
 from figures.Seven import Seven
@@ -21,18 +22,18 @@ from figures.Two import Two
 from figures.Zero import Zero
 
 Config.texts_to_translate = (
-    "Cześć pokażę Ci dzisiaj jak sprawdzić czy liczba jest niewymierna.",
+    "Cześć pokażę Ci dzisiaj jak sprawdzić czy liczba jest niewymierna. W pierwszym etapie musimy przekształcić wszystkie liczby złożone na ich czynniki pierwsze.",
+    "Kolejnym krokiem jest zamiana pierwiastka na potęgę.",
     "Dziękuję za uwagę.",
 )
 figures = [
-    # [Root(Zero(), Zero(), width=150), Coma(), Eight(), ],
-    # [
-    #     Equals(), Seven(), Divided(), Times(), Eight(),
-    #  Sequence(One(), Plus(), Fraction(Two(), Three()), Four(), width=300, height=100)],
-    [Fraction(One(), Seven()), One()],
-    [Plus(), Minus(), ],
-    [Zero(), One(), Two(), Three(), Four(), Five(), Six(), Seven(), Eight(), Nine(), ],
-    [Zero(), Eight(), ],
+    [
+        Root(Fraction(Eight(), Sequence(Four(), Nine())), width=200, height=200),
+        Equals(height=200),
+        Root(Fraction(RaiseToPower(Two(), Three()), RaiseToPower(Seven(), Two())), width=200, height=200),
+        Equals(height=200),
+        RaiseToPower(Fraction(RaiseToPower(Two(), Three()), RaiseToPower(Seven(), Two())), Fraction(One(centered=True), Two()),  width=200, height=200),
+    ],
 ]
 start_x, y_coor = Config.start_x, Config.start_y
 for row in figures:
@@ -45,7 +46,7 @@ for row in figures:
         x_coor += figure.width
     y_coor -= max(figure.height for figure in row)
 action_spaces = [
-    [[figures[0][0].draw]],
-    list(list(figure.draw for figure in row) for row in figures),
+    # [figures[0][0].draw],
+    # [figures[0][1].draw, figures[0][2].draw, ],
+    [figures[0][3].draw, figures[0][4].draw, ],
 ]
-

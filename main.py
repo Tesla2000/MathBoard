@@ -8,7 +8,7 @@ from recording.save_screen import save_screen
 if __name__ == '__main__':
     action_spaces = getattr(__import__(f"{Config.scripts_package.name}.{Config.lesson_name}"), Config.lesson_name).action_spaces
     for action_space in action_spaces:
-        for action in (action for row in action_space for action in row):
+        for action in action_space:
             action()
         if Record.record:
             concat2video()
