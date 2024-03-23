@@ -6,11 +6,10 @@ from turtle import width
 
 
 class _VideoElements:
-    final_video_name = "Skracanie_ułamków.mp4"
-    texts_to_translate = (
-        "Cześć pokażę Ci dzisiaj jak skracać ułamki.",
-        "Dziękuję za uwagę.",
-    )
+    lesson_name = "Znajdowanie_liczby_niewymiernej"
+    script = f"{lesson_name}.py"
+    final_video_name = f"{lesson_name}.mp4"
+    texts_to_translate = tuple()
 
 
 class Config(_VideoElements):
@@ -35,6 +34,7 @@ class Config(_VideoElements):
     last_frames = root / 'last_frames'
     first_frame = root / 'first_frame.jpg'
     final_videos = root / 'final_videos'
+    scripts_package = root / "scripts"
     output_videos.mkdir(exist_ok=True)
     images.mkdir(exist_ok=True)
     last_frames.mkdir(exist_ok=True)
@@ -61,9 +61,5 @@ class Config(_VideoElements):
             'ź': 'z',
             ' ': '_',
         }
-        return ''.join(polish_to_english.get(letter, letter) for letter in re.sub(r'[,\.?!]', '', text).lower()) + ".mp3"
-
-
-from recording.save_screen import save_screen
-
-save_screen(Config.first_frame)
+        return ''.join(
+            polish_to_english.get(letter, letter) for letter in re.sub(r'[,\.?!]', '', text).lower()) + ".mp3"

@@ -44,4 +44,4 @@ class Figure(ABC):
         pass
 
     def __repr__(self):
-        return f"{type(self).__name__}"
+        return f"{type(self).__name__},width={self.width},height={self.height}"
