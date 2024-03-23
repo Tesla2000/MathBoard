@@ -1,8 +1,7 @@
-from openai import OpenAI
+import elevenlabs
 
 from Config import Config
-
-client = OpenAI()
+import requests
 
 
 def generate_audio(text_to_translate: str):
@@ -11,12 +10,21 @@ def generate_audio(text_to_translate: str):
     )
     if speech_file_path.exists():
         return
-    response = client.audio.speech.create(
-        model=Config.model,
-        voice=Config.voice,
-        input=text_to_translate,
-    )
-    response.stream_to_file(speech_file_path)
+    url = f"https://api.elevenlabs.io/v1/text-to-speech/{Config.voice_id}"
+
+    payload = {
+        "model_id": Config.model_id,
+        "text": text_to_translate,
+        "voice_settings": {
+            "similarity_boost": Config.similarity_boost,
+            "stability": Config.stability,
+            "style": .5,
+            "use_speaker_boost": True
+        }
+    }
+    headers = {"Content-Type": "application/json"}
+    response = requests.request("POST", url, json=payload, headers=headers)
+    elevenlabs.save(response.content, speech_file_path)
 
 
 if __name__ == "__main__":
