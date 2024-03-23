@@ -9,10 +9,10 @@ class RaiseToPower(Figure):
         self.exponent = exponent
 
     def _draw(self, width: int, height: int):
-        self.base.y_coor = self.y_coor - height // 4
+        self.base.y_coor = self.y_coor - height // 7
         self.base.x_coor = self.x_coor
         self.base.width = width * 3 // 4
-        self.base.height = height * 3 // 4
+        self.base.height = height * 7 // 8
         self.base.draw()
         self.exponent.y_coor = self.y_coor
         self.exponent.x_coor = self.x_coor + width * 3 // 4

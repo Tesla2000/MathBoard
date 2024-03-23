@@ -30,4 +30,3 @@ class Parenthesized(Figure):
         self.inner.width = self.width
         self.inner.height = self.height
         self.inner.draw()
-        pass

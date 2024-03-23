@@ -1,5 +1,6 @@
 from Config import Config
 from audio.generate_audio import generate_audio
+from figures.Blank import Blank
 from figures.Coma import Coma
 from figures.Divided import Divided
 from figures.Eight import Eight
@@ -30,7 +31,7 @@ Config.texts_to_translate = (
 row_height = 200
 figures = [
     [
-        Root(Fraction(Eight(), Sequence(Four(), Nine())), width=200, height=row_height),
+        Root(Fraction(Sequence(Blank(width=Config.default_width // 2), Eight(), Blank(width=Config.default_width // 2)), Sequence(Four(), Nine())), width=200, height=row_height),
         Equals(height=row_height),
         Root(Fraction(RaiseToPower(Two(), Three()), RaiseToPower(Seven(), Two())), width=200, height=row_height),
         Equals(height=row_height),

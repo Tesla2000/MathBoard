@@ -27,9 +27,9 @@ class Figure(ABC):
         if height is None:
             height = self.height
         if border_width is None and self.border_width is True:
-            border_width = max(Config.minimal_border_width, width // 10)
+            border_width = Config.minimal_border_width
         if border_height is None and self.border_height is True:
-            border_height = max(Config.minimal_border_width, height // 10)
+            border_height = Config.minimal_border_width
         pd()
         self._draw(width - (border_width or 0), height - (border_height or 0))
         pu()
