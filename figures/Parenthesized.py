@@ -4,7 +4,6 @@ from recording.record_turtle import fd, rt, pu, pd
 
 
 class Parenthesized(Figure):
-
     def __init__(self, inner: Figure, width: int = None, height: int = None):
         super().__init__(width, height)
         self.inner = inner

@@ -6,6 +6,7 @@ from figures.Figure import Figure
 
 class Plus(Figure):
     width = Config.default_width // 2
+
     def _draw(self, width: int, height: int):
         rt(90)
         pu()

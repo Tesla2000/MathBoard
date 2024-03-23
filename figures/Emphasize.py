@@ -8,12 +8,20 @@ from recording.record_turtle import pu, goto, pd
 
 
 class Emphasize(Figure):
-
-    def __init__(self, inner: Figure, width: int = None, height: int = None):
+    def __init__(
+        self, inner: Figure, width: int = None, height: int = None, color: str = "red"
+    ):
         super().__init__(width, height)
         self.inner = inner
+        self.color = color
 
-    def draw(self, width: int = None, height: int = None, border_width: int = None, border_height: int = None):
+    def draw(
+        self,
+        width: int = None,
+        height: int = None,
+        border_width: int = None,
+        border_height: int = None,
+    ):
         self.x_coor = self.inner.x_coor
         self.y_coor = self.inner.y_coor
         self.width = self.inner.width
@@ -21,7 +29,7 @@ class Emphasize(Figure):
         super().draw(width, height, border_width, border_height)
 
     def _draw(self, width: int, height: int):
-        color('red')
+        color(self.color)
         self._draw_ellipse(self.inner.width * 3 // 4, self.inner.height * 3 // 4)
         color(Config.color)
 

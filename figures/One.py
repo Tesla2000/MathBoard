@@ -6,7 +6,14 @@ from recording.record_turtle import pu, pd, fd, rt, bk
 class One(Figure):
     width = Config.default_width // 2
 
-    def __init__(self, width: int = None, height: int = None, x_coor: int = None, y_coor: int = None, centered: bool = False):
+    def __init__(
+        self,
+        width: int = None,
+        height: int = None,
+        x_coor: int = None,
+        y_coor: int = None,
+        centered: bool = False,
+    ):
         super().__init__(width, height, x_coor, y_coor)
         self.centered = centered
 
