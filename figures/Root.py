@@ -1,5 +1,6 @@
 from math import sqrt, sin, radians
 
+from Config import Config
 from figures import moveto
 from figures.Figure import Figure
 from recording.record_turtle import pu, rt, fd, lt, pd, pos, setheading
@@ -7,17 +8,18 @@ from recording.record_turtle import pu, rt, fd, lt, pd, pos, setheading
 
 class Root(Figure):
 
-    def __init__(self, index: Figure, radical: Figure, width: int = None, height: int = None):
+    def __init__(self, radical: Figure, index: Figure = None, width: int = None, height: int = None):
         super().__init__(width, height)
         self.index = index
         self.radical = radical
 
     def _draw(self, width: int, height: int):
-        self.index.x_coor = self.x_coor
-        self.index.y_coor = self.y_coor
-        self.index.width = self.height // 4
-        self.index.height = self.height // 2
-        self.index.draw()
+        if self.index is not None:
+            self.index.x_coor = self.x_coor
+            self.index.y_coor = self.y_coor
+            self.index.width = self.height // 4
+            self.index.height = self.height // 2
+            self.index.draw()
         moveto(self.x_coor, self.y_coor)
         pu()
         rt(90)
@@ -32,7 +34,7 @@ class Root(Figure):
         width = self.width + self.x_coor - x_coor
         fd(width)
         self.radical.x_coor = x_coor
-        self.radical.y_coor = self.y_coor - self.height // 10
-        self.radical.height = self.height - self.height // 10
+        self.radical.y_coor = self.y_coor - Config.minimal_border_width
+        self.radical.height = self.height - Config.minimal_border_width
         self.radical.width = width
         self.radical.draw()

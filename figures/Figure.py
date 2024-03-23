@@ -3,7 +3,7 @@ from turtle import color
 
 from Config import Config
 from figures import moveto
-from recording.record_turtle import pu, pd
+from recording.record_turtle import pu, pd, fd, rt, lt
 
 
 class Figure(ABC):
@@ -27,9 +27,9 @@ class Figure(ABC):
         if height is None:
             height = self.height
         if border_width is None and self.border_width is True:
-            border_width = max(Config.minimal_border_width, width // 10)
+            border_width = Config.minimal_border_width
         if border_height is None and self.border_height is True:
-            border_height = max(Config.minimal_border_width, height // 10)
+            border_height = Config.minimal_border_width
         pd()
         self._draw(width - (border_width or 0), height - (border_height or 0))
         pu()
@@ -44,4 +44,4 @@ class Figure(ABC):
         pass
 
     def __repr__(self):
-        return f"{type(self).__name__}"
+        return f"{type(self).__name__},width={self.width},height={self.height}"
