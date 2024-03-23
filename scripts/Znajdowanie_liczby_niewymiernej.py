@@ -17,9 +17,9 @@ from figures.Two import Two
 Config.texts_to_translate = (
     "Cześć pokażę Ci dzisiaj jak sprawdzić czy liczba jest niewymierna. W pierwszym etapie musimy przekształcić wszystkie liczby złożone na ich czynniki pierwsze.",
     "Kolejnym krokiem jest zamiana pierwiastka na potęgę.",
-    "Przenisienie wykładnika z ułamka na licznik i mianownik.",
+    "Przeniesienie wykładnika z ułamka na licznik i mianownik.",
     "I uproszczenie potęg poprzez mnożenie wykładników.",
-    "W ostatninim etapie musimy sprawdzić czy wykładniki są liczbami całkowitymi. Jeśli tak oznacza to, że liczba jest wymierna. Jeśli nie liczba jest niewymierna.",
+    "W ostatnim etapie musimy sprawdzić czy wykładniki są liczbami całkowitymi. Jeśli tak oznacza to, że liczba jest wymierna. Jeśli nie liczba jest niewymierna.",
     "Jak widać w tym wypadku wykładnik trzy drugie jest nieskracalny i co za tym idzie nie jest liczbą całkowitą, zatem liczba jest niewymierna.",
     "Dziękuję za uwagę.",
 )
@@ -44,7 +44,7 @@ figures = [
         Equals(height=row_height),
     ],
     [
-        Blank(height=10)
+        Blank(height=50)
     ],
     [
         Fraction(

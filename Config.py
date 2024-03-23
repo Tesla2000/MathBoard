@@ -9,7 +9,6 @@ class _VideoElements:
     lesson_name = "Znajdowanie_liczby_niewymiernej"
     script = f"{lesson_name}.py"
     final_video_name = f"{lesson_name}.mp4"
-    texts_to_translate = tuple()
 
 
 class Config(_VideoElements):
@@ -22,6 +21,9 @@ class Config(_VideoElements):
     start_x = -640
     # start_x = -300
     start_y = 280
+
+    model = "tts-1-hd"
+    voice = "nova"
 
     root = Path(__file__).parent
     open_ai_token = root.joinpath('open_ai_token').read_text()
