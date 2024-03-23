@@ -22,12 +22,12 @@ from figures.Zero import Zero
 from recording.concat2video import concat2video
 from recording.concat_videos import concat_videos
 
-if __name__ == '__main__':
+
+def main():
     figures = [
-        # [Root(Zero(), Zero(), width=150), Coma(), Eight(), ],
-        # [
-        #     Equals(), Seven(), Divided(), Times(), Eight(),
-        #  Sequence(One(), Plus(), Fraction(Two(), Three()), Four(), width=300, height=100)],
+        [Root(Zero(width=25, height=50), Zero(), width=150), Coma(), Eight(), ],
+        [Equals(), Seven(), Divided(), Times(), Eight(),
+         Sequence(One(), Plus(), Fraction(Two(), Three()), Four(), width=300, height=100)],
         [Fraction(One(), Seven()), One()],
         [Plus(), Minus(), ],
         [Zero(), One(), Two(), Three(), Four(), Five(), Six(), Seven(), Eight(), Nine(), ],
@@ -52,3 +52,7 @@ if __name__ == '__main__':
     for text_translate in Config.texts_to_translate:
         generate_audio(text_translate)
     concat_videos()
+
+
+if __name__ == '__main__':
+    main()
