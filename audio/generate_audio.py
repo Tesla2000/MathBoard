@@ -1,7 +1,6 @@
-from pathlib import Path
+from openai import OpenAI
 
 from Config import Config
-from openai import OpenAI
 
 client = OpenAI()
 
@@ -19,4 +18,4 @@ def generate_audio(text_to_translate: str):
 
 
 if __name__ == '__main__':
-    generate_audio("Przenisienie wykładnika z ułamka na licznik i mianownik.")
+    generate_audio("Przeniesienie wykładnika z ułamka na licznik i mianownik.")
