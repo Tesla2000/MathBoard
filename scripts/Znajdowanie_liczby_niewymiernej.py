@@ -18,13 +18,13 @@ from figures.Three import Three
 from figures.Two import Two
 
 PassedVariables.texts_to_translate = (
-    "Cześć pokażę Ci dzisiaj jak sprawdzić czy liczba jest niewymierna. W pierwszym etapie musimy przekształcić wszystkie liczby złożone na ich czynniki pierwsze.",
+    "Cześć, pokażę Ci dzisiaj, jak sprawdzić, czy liczba jest niewymierna. W pierwszym etapie musimy przekształcić wszystkie liczby złożone na ich czynniki pierwsze.",
     "Kolejnym krokiem jest zamiana pierwiastka na potęgę.",
-    "Przeniesienie wykładnika z ułamka na licznik i mianownik.",
-    "I uproszczenie potęg poprzez mnożenie wykładników.",
-    "W ostatnim etapie musimy sprawdzić czy wykładniki są liczbami całkowitymi. Jeśli tak oznacza to że liczba jest wymierna. Jeśli nie liczba jest niewymierna.",
-    "Jak widać w tym wypadku wykładnik trzy drugie jest nieskracalny i co za tym idzie nie jest liczbą całkowitą, zatem liczba jest niewymierna.",
-    "Dziękuję za uwagę.",
+    "Następnie przenosimy wykładnik z ułamka na licznik i mianownik.",
+    "Upraszczamy potęgi poprzez mnożenie wykładników.",
+    "W ostatnim etapie musimy sprawdzić, czy wykładniki są liczbami całkowitymi. Jeśli tak, oznacza to, że liczba jest wymierna. Jeśli nie, liczba jest niewymierna.",
+    "Jak widać, w tym wypadku wykładnik dwie trzecie jest nieskracalny i, co za tym idzie, nie jest liczbą całkowitą. Zatem liczba jest niewymierna.",
+    "Dziękuję za uwagę."
 )
 texts = {
     1: "Upraszczanie potęg i pierwiastków:"

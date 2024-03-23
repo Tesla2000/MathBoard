@@ -11,7 +11,17 @@ class _VideoElements:
     final_video_name = f"{lesson_name}.mp4"
 
 
-class Config(_VideoElements):
+class _AudioElements:
+    similarity_boost = 1
+    stability = 1
+    model_id = "eleven_multilingual_v2"
+    voice_id = "2EiwWnXFnvU5JabPnv8n"
+
+    model = "tts-1"
+    voice = "alloy"
+
+
+class Config(_VideoElements, _AudioElements):
     font_size = 12
     font_path = "DejaVuSans"
     color = "black"
@@ -24,9 +34,6 @@ class Config(_VideoElements):
     start_x = -640
     # start_x = -300
     start_y = 280
-
-    model = "tts-1"
-    voice = "alloy"
 
     root = Path(__file__).parent
     open_ai_token = root.joinpath("open_ai_token").read_text()
