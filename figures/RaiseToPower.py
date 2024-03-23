@@ -1,3 +1,4 @@
+from Config import Config
 from figures.Figure import Figure
 
 
@@ -9,10 +10,10 @@ class RaiseToPower(Figure):
         self.exponent = exponent
 
     def _draw(self, width: int, height: int):
-        self.base.y_coor = self.y_coor - height // 7
+        self.base.y_coor = self.y_coor - Config.minimal_border_width
         self.base.x_coor = self.x_coor
         self.base.width = width * 3 // 4
-        self.base.height = height * 7 // 8
+        self.base.height = height - Config.minimal_border_width
         self.base.draw()
         self.exponent.y_coor = self.y_coor
         self.exponent.x_coor = self.x_coor + width * 3 // 4

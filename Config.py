@@ -16,7 +16,7 @@ class Config(_VideoElements):
     default_height = 100
     default_width = 50
     symbol_write_speed = 10
-    minimal_border_width = 5
+    minimal_border_width = 7
     width(3)
     # screensize(1000, 600)
     start_x = -640
@@ -62,4 +62,4 @@ class Config(_VideoElements):
             ' ': '_',
         }
         return ''.join(
-            polish_to_english.get(letter, letter) for letter in re.sub(r'[,\.?!]', '', text).lower()) + ".mp3"
+            polish_to_english.get(letter, letter) for letter in re.sub(r'[,\.?!]', '', text.strip()).lower()) + ".mp3"

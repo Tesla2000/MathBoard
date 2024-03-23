@@ -3,7 +3,7 @@ from turtle import color
 
 from Config import Config
 from figures import moveto
-from recording.record_turtle import pu, pd
+from recording.record_turtle import pu, pd, fd, rt, lt
 
 
 class Figure(ABC):

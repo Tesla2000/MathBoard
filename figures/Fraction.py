@@ -13,7 +13,7 @@ class Fraction(Figure):
     def _draw(self, width: int, height: int):
         self.numerator.x_coor = self.x_coor
         self.numerator.y_coor = self.y_coor
-        self.numerator.draw(width, height // 2 - Config.minimal_border_width)
+        self.numerator.draw(width, height // 2)
         moveto(self.x_coor, self.y_coor)
         pu()
         rt(90)
