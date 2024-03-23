@@ -25,8 +25,8 @@ class Config(_VideoElements):
     # start_x = -300
     start_y = 280
 
-    model = "tts-1-hd"
-    voice = "nova"
+    model = "tts-1"
+    voice = "alloy"
 
     root = Path(__file__).parent
     open_ai_token = root.joinpath('open_ai_token').read_text()

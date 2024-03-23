@@ -2,6 +2,7 @@ from Config import Config
 from PassedVariables import PassedVariables
 from figures.Blank import Blank
 from figures.Eight import Eight
+from figures.Emphasize import Emphasize
 from figures.Equals import Equals
 from figures.Four import Four
 from figures.Fraction import Fraction
@@ -27,45 +28,45 @@ PassedVariables.texts_to_translate = (
 )
 texts = {
     1: "Upraszczanie potęg i pierwiastków:"
-    "\n>>> 1. Zamiana liczb złożonych na ich czynniki pierwsze."
-    "\n2. Przekształcenie pierwiastków na potęgi."
-    "\n3. Jeśli występują ułamki dziesiętne przekształć je na zwykłe."
-    "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
-    "\n5. Jeśli występują ułamki podniesione do potęgi przenieś wykładnik ułamka do wykładnika licznika i mianownika."
-    "\n6. Jeśli można wykonać mnożenie wykładników pomnóż mianowniki."
-    "\n7. Jeśli ułamki wzwykłe można skrócić skróć je.",
+       "\n>>> 1. Zamiana liczb złożonych na ich czynniki pierwsze."
+       "\n2. Przekształcenie pierwiastków na potęgi."
+       "\n3. Jeśli występują ułamki dziesiętne przekształć je na zwykłe."
+       "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
+       "\n5. Jeśli występują ułamki podniesione do potęgi przenieś wykładnik ułamka do wykładnika licznika i mianownika."
+       "\n6. Jeśli można wykonać mnożenie wykładników pomnóż mianowniki."
+       "\n7. Jeśli ułamki wzwykłe można skrócić skróć je.",
     2: "Upraszczanie potęg i pierwiastków:"
-    "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
-    "\n>>> 2. Przekształcenie pierwiastków na potęgi."
-    "\n3. Jeśli występują ułamki dziesiętne przekształć je na zwykłe."
-    "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
-    "\n5. Jeśli występują ułamki podniesione do potęgi przenieś wykładnik ułamka do wykładnika licznika i mianownika."
-    "\n6. Jeśli można wykonać mnożenie wykładników pomnóż mianowniki."
-    "\n7. Jeśli ułamki wzwykłe można skrócić skróć je.",
+       "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
+       "\n>>> 2. Przekształcenie pierwiastków na potęgi."
+       "\n3. Jeśli występują ułamki dziesiętne przekształć je na zwykłe."
+       "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
+       "\n5. Jeśli występują ułamki podniesione do potęgi przenieś wykładnik ułamka do wykładnika licznika i mianownika."
+       "\n6. Jeśli można wykonać mnożenie wykładników pomnóż mianowniki."
+       "\n7. Jeśli ułamki wzwykłe można skrócić skróć je.",
     3: "Upraszczanie potęg i pierwiastków:"
-    "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
-    "\n2. Przekształcenie pierwiastków na potęgi."
-    "\n3. Jeśli występują ułamki dziesiętne przekształć je na zwykłe."
-    "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
-    "\n>>> 5. Jeśli występują ułamki podniesione do potęgi przenieś wykładnik ułamka do wykładnika licznika i mianownika."
-    "\n6. Jeśli można wykonać mnożenie wykładników pomnóż mianowniki."
-    "\n7. Jeśli ułamki wzwykłe można skrócić skróć je.",
+       "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
+       "\n2. Przekształcenie pierwiastków na potęgi."
+       "\n3. Jeśli występują ułamki dziesiętne przekształć je na zwykłe."
+       "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
+       "\n>>> 5. Jeśli występują ułamki podniesione do potęgi przenieś wykładnik ułamka do wykładnika licznika i mianownika."
+       "\n6. Jeśli można wykonać mnożenie wykładników pomnóż mianowniki."
+       "\n7. Jeśli ułamki wzwykłe można skrócić skróć je.",
     4: "Upraszczanie potęg i pierwiastków:"
-    "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
-    "\n2. Przekształcenie pierwiastków na potęgi."
-    "\n3. Jeśli występują ułamki dziesiętne przekształć je na zwykłe."
-    "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
-    "\n5. Jeśli występują ułamki podniesione do potęgi przenieś wykładnik ułamka do wykładnika licznika i mianownika."
-    "\n>>> 6. Jeśli można wykonać mnożenie wykładników pomnóż mianowniki."
-    "\n7. Jeśli ułamki wzwykłe można skrócić skróć je.",
+       "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
+       "\n2. Przekształcenie pierwiastków na potęgi."
+       "\n3. Jeśli występują ułamki dziesiętne przekształć je na zwykłe."
+       "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
+       "\n5. Jeśli występują ułamki podniesione do potęgi przenieś wykładnik ułamka do wykładnika licznika i mianownika."
+       "\n>>> 6. Jeśli można wykonać mnożenie wykładników pomnóż mianowniki."
+       "\n7. Jeśli ułamki wzwykłe można skrócić skróć je.",
     5: "Upraszczanie potęg i pierwiastków:"
-    "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
-    "\n2. Przekształcenie pierwiastków na potęgi."
-    "\n3. Jeśli występują ułamki dziesiętne przekształć je na zwykłe."
-    "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
-    "\n5. Jeśli występują ułamki podniesione do potęgi przenieś wykładnik ułamka do wykładnika licznika i mianownika."
-    "\n6. Jeśli można wykonać mnożenie wykładników pomnóż mianowniki."
-    "\n>>> 7. Jeśli ułamki wzwykłe można skrócić skróć je.",
+       "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
+       "\n2. Przekształcenie pierwiastków na potęgi."
+       "\n3. Jeśli występują ułamki dziesiętne przekształć je na zwykłe."
+       "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
+       "\n5. Jeśli występują ułamki podniesione do potęgi przenieś wykładnik ułamka do wykładnika licznika i mianownika."
+       "\n6. Jeśli można wykonać mnożenie wykładników pomnóż mianowniki."
+       "\n>>> 7. Jeśli ułamki wzwykłe można skrócić skróć je.",
 }
 row_height = 250
 text = Text(
@@ -99,7 +100,7 @@ figures = [
     ],
     [
         Fraction(
-            RaiseToPower(Two(), Fraction(Three(), Two())),
+            RaiseToPower(Two(), emphasized := Fraction(Three(), Two())),
             RaiseToPower(Seven(), One(centered=True)), width=200, height=row_height
         ),
         text,
@@ -121,5 +122,8 @@ action_spaces = [
     [Text.clear, text.gen_add_text(texts[2]), text.draw, figures[0][3].draw, figures[0][4].draw, ],
     [Text.clear, text.gen_add_text(texts[3]), text.draw, figures[0][5].draw, figures[0][6].draw, ],
     [Text.clear, text.gen_add_text(texts[4]), text.draw, figures[0][7].draw, figures[0][8].draw, ],
-    [Text.clear, text.gen_add_text(texts[4]), text.draw, figures[0][9].draw, figures[-1][0].draw, ],
+    [Text.clear, text.gen_add_text(texts[5]), text.draw,
+     figures[0][9].draw,
+     figures[-1][0].draw,
+     Emphasize(emphasized).draw],
 ]
