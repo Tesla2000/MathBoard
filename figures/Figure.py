@@ -74,11 +74,9 @@ class Figure(ABC):
                        border_width: int = None,
                        border_height: int = None,
                        ):
-        is_record = PassedVariables.record
-        PassedVariables.turn_recording_off()
+        PassedVariables.supress_recording = True
         self.undo(width, height, border_width, border_height)
-        if is_record:
-            PassedVariables.turn_recording_on()
+        PassedVariables.supress_recording = False
 
     @abstractmethod
     def _draw(self, width: int, height: int):

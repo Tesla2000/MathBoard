@@ -1,6 +1,7 @@
 class PassedVariables:
     texts_to_translate = tuple()
     record = False
+    supress_recording = False
     texts = []
 
     @classmethod
