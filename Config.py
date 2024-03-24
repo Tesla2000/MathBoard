@@ -8,7 +8,7 @@ from turtle import width
 class _VideoElements:
     lesson_name = "Znajdowanie_liczby_niewymiernej"
     script = f"{lesson_name}.py"
-    final_video_name = f"{lesson_name}.mp4"
+    final_video_name = (lesson_name + "_{}.mp4").format
 
 
 class _AudioElements:
@@ -22,6 +22,7 @@ class _AudioElements:
 
 
 class Config(_VideoElements, _AudioElements):
+    languages = ('uk', 'pl',)
     line_width = 3
     font_size = 12
     font_path = "DejaVuSans"

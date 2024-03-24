@@ -1,11 +1,14 @@
 from typing import Callable
 
+from googletrans import Translator
+
 from Config import Config
 from PassedVariables import PassedVariables
 from figures.Figure import Figure
 
 
 class Text(Figure):
+    _translator = Translator()
     def __init__(
         self,
         width: int = None,
@@ -28,6 +31,10 @@ class Text(Figure):
         border_width: int = None,
         border_height: int = None,
     ):
+
+        if (detected := self._translator.detect(self.text).lang) != PassedVariables.language:
+            self.text = '\n'.join(self._translator.translate(line, dest=PassedVariables.language, src=detected).text for line in
+                             self.text.splitlines())
         PassedVariables.texts.append(
             (
                 self.x_coor - Config.start_x,
