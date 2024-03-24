@@ -18,9 +18,9 @@ def generate_audio(text_to_translate: str):
         "voice_settings": {
             "similarity_boost": Config.similarity_boost,
             "stability": Config.stability,
-            "style": .5,
-            "use_speaker_boost": True
-        }
+            "style": 0.5,
+            "use_speaker_boost": True,
+        },
     }
     headers = {"Content-Type": "application/json"}
     response = requests.request("POST", url, json=payload, headers=headers)
