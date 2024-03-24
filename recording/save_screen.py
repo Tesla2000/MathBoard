@@ -22,7 +22,7 @@ def save_screen(path: Path = None):
             font = truetype(Config.font_path, font_size)
             draw.text((x, y), text, fill=Config.color, font=font, encoding="utf-8")
         if path is None:
-            img.save(Config.images / f"{index}.jpg")
+            img.save(Config.images / f"{index}{Config.image_format}")
         else:
             img.save(path)
         index += 1

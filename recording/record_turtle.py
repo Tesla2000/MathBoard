@@ -16,7 +16,7 @@ def _record_wrapper(function):
 
 def _stop_recording_wrapper(function):
     def inner(*args, **kwargs):
-        PassedVariables.record = False
+        PassedVariables.turn_recording_off()
         return function(*args, **kwargs)
 
     return inner
@@ -24,7 +24,7 @@ def _stop_recording_wrapper(function):
 
 def _start_recording_wrapper(function):
     def inner(*args, **kwargs):
-        PassedVariables.record = True
+        PassedVariables.turn_recording_on()
         return function(*args, **kwargs)
 
     return inner

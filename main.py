@@ -20,10 +20,11 @@ if __name__ == "__main__":
             concat2video()
         else:
             first_iteration = False
-            PassedVariables.record = True
+            PassedVariables.turn_recording_on()
             save_screen(Config.first_frame)
             shutil.rmtree(Config.images)
             Config.images.mkdir()
+        pass
     for text_translate in PassedVariables.texts_to_translate:
         generate_audio(text_translate)
     concat_videos()

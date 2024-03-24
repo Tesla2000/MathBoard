@@ -22,6 +22,7 @@ class _AudioElements:
 
 
 class Config(_VideoElements, _AudioElements):
+    line_width = 3
     font_size = 12
     font_path = "DejaVuSans"
     color = "black"
@@ -29,7 +30,7 @@ class Config(_VideoElements, _AudioElements):
     default_width = 50
     symbol_write_speed = 10
     minimal_border_width = 7
-    width(3)
+    width(line_width)
     # screensize(1000, 600)
     start_x = -640
     # start_x = -300
@@ -40,11 +41,12 @@ class Config(_VideoElements, _AudioElements):
     os.environ.setdefault("OPENAI_API_KEY", open_ai_token)
     temporary_picture = root / ".ps"
     temp_filename = str(root / ".mp4")
+    image_format = ".jpg"
     images = root / "images"
     output_videos = root / "output_videos"
     output_audios = root / "output_audios"
     last_frames = root / "last_frames"
-    first_frame = root / "first_frame.jpg"
+    first_frame = root / f"first_frame{image_format}"
     final_videos = root / "final_videos"
     scripts_package = root / "scripts"
     output_videos.mkdir(exist_ok=True)
