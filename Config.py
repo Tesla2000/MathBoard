@@ -38,6 +38,7 @@ class Config(_VideoElements, _AudioElements):
     start_y = 280
 
     root = Path(__file__).parent
+    deepL_token = root.joinpath("deepL_token").read_text()
     open_ai_token = root.joinpath("open_ai_token").read_text()
     os.environ.setdefault("OPENAI_API_KEY", open_ai_token)
     temporary_picture = root / ".ps"

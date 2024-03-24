@@ -1,14 +1,30 @@
+import time
 from typing import Callable
 
-from googletrans import Translator
+import requests
 
 from Config import Config
 from PassedVariables import PassedVariables
 from figures.Figure import Figure
 
 
+if __name__ == '__main__':
+    from libretranslatepy import LibreTranslateAPI
+
+    lt = LibreTranslateAPI("https://libretranslate.com/translate", "")
+
+    print(lt.translate("LibreTranslate is awesome!", "en", "es"))
+    # LibreTranslate es impresionante!
+
+    print(lt.detect("Hello World"))
+    # [{"confidence": 0.6, "language": "en"}]
+
+    print(lt.languages())
+    # [{"code":"en", "name":"English"}]
+
 class Text(Figure):
     _translator = Translator()
+
     def __init__(
         self,
         width: int = None,
@@ -33,8 +49,9 @@ class Text(Figure):
     ):
 
         if (detected := self._translator.detect(self.text).lang) != PassedVariables.language:
-            self.text = '\n'.join(self._translator.translate(line, dest=PassedVariables.language, src=detected).text for line in
-                             self.text.splitlines())
+            self.text = '\n'.join(
+                self._translator.translate(line, dest=PassedVariables.language, src=detected).text for line in
+                self.text.splitlines())
         PassedVariables.texts.append(
             (
                 self.x_coor - Config.start_x,
