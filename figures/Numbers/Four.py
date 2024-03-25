@@ -1,9 +1,10 @@
 from recording.record_turtle import pu, fd, rt, bk, lt
 
-from figures.Figure import Figure
+from .Number import Number
 
 
-class Four(Figure):
+class Four(Number):
+    value = 4
     def _draw(self, width: int, height: int):
         rt(90)
         fd(height // 2)

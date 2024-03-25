@@ -1,20 +1,14 @@
 from Config import Config
 from figures.Blank import Blank
-from figures.Eight import Eight
 from figures.Emphasize import Emphasize
 from figures.Equals import Equals
-from figures.Four import Four
 from figures.Fraction import Fraction
-from figures.Nine import Nine
-from figures.One import One
+from figures.Numbers.Number import Number
 from figures.Parenthesized import Parenthesized
 from figures.RaiseToPower import RaiseToPower
 from figures.Root import Root
 from figures.Sequence import Sequence
-from figures.Seven import Seven
 from figures.Text import Text
-from figures.Three import Three
-from figures.Two import Two
 
 texts_to_translate = (
     "Cześć, pokażę Ci dzisiaj, jak sprawdzić, czy liczba jest niewymierna. W pierwszym etapie musimy przekształcić wszystkie liczby złożone na ich czynniki pierwsze.",
@@ -75,47 +69,47 @@ figures = [
             Fraction(
                 Sequence(
                     Blank(width=Config.default_width // 2),
-                    Eight(),
+                    Number.from_int(8),
                     Blank(width=Config.default_width // 2),
                 ),
-                Sequence(Four(), Nine()),
+                Number.from_int(49),
             ),
             width=200,
             height=row_height,
         ),
         Equals(height=row_height),
         Root(
-            Fraction(RaiseToPower(Two(), Three()), RaiseToPower(Seven(), Two())),
-            index=Two(),
+            Fraction(RaiseToPower(Number.from_int(2), Number.from_int(3)), RaiseToPower(Number.from_int(7), Number.from_int(2))),
+            index=Number.from_int(2),
             width=200,
             height=row_height,
         ),
         Equals(height=row_height),
         RaiseToPower(
             Parenthesized(
-                Fraction(RaiseToPower(Two(), Three()), RaiseToPower(Seven(), Two()))
+                Fraction(RaiseToPower(Number.from_int(2), Number.from_int(3)), RaiseToPower(Number.from_int(7), Number.from_int(2)))
             ),
-            Fraction(One(centered=True), Two()),
+            Fraction(Number.from_int(1, centered=True), Number.from_int(2)),
             width=200,
             height=row_height,
         ),
         Equals(height=row_height),
         Fraction(
             RaiseToPower(
-                Parenthesized(RaiseToPower(Two(), Three())),
-                Fraction(One(centered=True), Two()),
+                Parenthesized(RaiseToPower(Number.from_int(2), Number.from_int(3))),
+                Fraction(Number.from_int(1, centered=True), Number.from_int(2)),
             ),
             RaiseToPower(
-                Parenthesized(RaiseToPower(Seven(), Two())),
-                Fraction(One(centered=True), Two()),
+                Parenthesized(RaiseToPower(Number.from_int(7), Number.from_int(2))),
+                Fraction(Number.from_int(1, centered=True), Number.from_int(2)),
             ),
             width=200,
             height=row_height,
         ),
         Equals(height=row_height),
         Fraction(
-            RaiseToPower(Two(), Fraction(Three(), Two())),
-            RaiseToPower(Seven(), Fraction(Two(), Two())),
+            RaiseToPower(Number.from_int(2), Fraction(Number.from_int(3), Number.from_int(2))),
+            RaiseToPower(Number.from_int(7), Fraction(Number.from_int(2), Number.from_int(2))),
             width=200,
             height=row_height,
         ),
@@ -124,8 +118,8 @@ figures = [
     [Blank(height=50)],
     [
         Fraction(
-            RaiseToPower(Two(), Fraction(Three(), Two())),
-            RaiseToPower(Seven(), One(centered=True)),
+            RaiseToPower(Number.from_int(2), Fraction(Number.from_int(3), Number.from_int(2))),
+            RaiseToPower(Number.from_int(7), Number.from_int(1, centered=True)),
             width=200,
             height=row_height,
         ),

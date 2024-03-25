@@ -1,10 +1,11 @@
 from math import pi, atan, sqrt
 from recording.record_turtle import fd, rt, bk, setheading
 
-from figures.Figure import Figure
+from .Number import Number
 
 
-class Seven(Figure):
+class Seven(Number):
+    value = 7
     def _draw(self, width: int, height: int):
         fd(width)
         rt(atan(width / height) * 180 / pi + 90)

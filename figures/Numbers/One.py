@@ -1,9 +1,10 @@
 from Config import Config
-from figures.Figure import Figure
+from .Number import Number
 from recording.record_turtle import pu, pd, fd, rt, bk
 
 
-class One(Figure):
+class One(Number):
+    value = 1
     width = Config.default_width // 2
 
     def __init__(
