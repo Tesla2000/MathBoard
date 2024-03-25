@@ -39,4 +39,3 @@ if __name__ == "__main__":
         PassedVariables.reset()
         reset()
         width(Config.line_width)
-

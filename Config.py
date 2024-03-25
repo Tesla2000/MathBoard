@@ -22,10 +22,10 @@ class _AudioElements:
 
 
 class Config(_VideoElements, _AudioElements):
-    base_language = 'pl'
+    base_language = "pl"
     languages = (
-        'uk',
-        'pl',
+        "uk",
+        "pl",
     )
     font_size = 12
     font_path = "DejaVuSans"

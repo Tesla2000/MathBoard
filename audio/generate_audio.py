@@ -17,7 +17,9 @@ def generate_audio(text_to_translate: str) -> Path:
     if normalized_text in audio_paths:
         speech_file_path = Path(audio_paths[normalized_text])
     else:
-        speech_file_path = Config.output_audios.joinpath(str(random.randint(0, 1_000_000_000))).with_suffix('.mp3')
+        speech_file_path = Config.output_audios.joinpath(
+            str(random.randint(0, 1_000_000_000))
+        ).with_suffix(".mp3")
     if speech_file_path.exists():
         return speech_file_path
     raise ValueError

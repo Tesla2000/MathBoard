@@ -6,6 +6,7 @@ from .Digit import Digit
 
 class Seven(Digit):
     value = 7
+
     def _draw(self, width: int, height: int):
         fd(width)
         rt(atan(width / height) * 180 / pi + 90)

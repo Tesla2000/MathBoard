@@ -5,6 +5,7 @@ from .Digit import Digit
 
 class Nine(Digit):
     value = 9
+
     def _draw(self, width: int, height: int):
         fd(width)
         rt(90)

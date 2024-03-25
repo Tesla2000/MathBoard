@@ -30,7 +30,9 @@ class Emphasize(Figure):
 
     def _draw(self, width: int, height: int):
         c(self.color)
-        self._draw_rectangle(width + 2 * Config.line_width, height + 2 * Config.line_width)
+        self._draw_rectangle(
+            width + 2 * Config.line_width, height + 2 * Config.line_width
+        )
         c(Config.color)
 
     def _draw_rectangle(self, width: int, height: int):

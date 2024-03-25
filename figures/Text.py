@@ -7,7 +7,6 @@ from translation import translate
 
 
 class Text(Figure):
-
     def __init__(
         self,
         width: int = None,

@@ -16,7 +16,8 @@ def concat2video(delete_images: bool = True):
     )
     clip.write_videofile(str(output_video_path), codec="libx264")
     shutil.move(
-        images[-1], Config.last_frames.joinpath(video_file_name).with_suffix(Config.image_format)
+        images[-1],
+        Config.last_frames.joinpath(video_file_name).with_suffix(Config.image_format),
     )
     if delete_images:
         shutil.rmtree(Config.images)
