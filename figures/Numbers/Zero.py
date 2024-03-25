@@ -1,9 +1,9 @@
+from figures.Numbers.Number import Number
 from recording.record_turtle import fd, rt
 
-from figures.Figure import Figure
 
-
-class Zero(Figure):
+class Zero(Number):
+    value = 0
     def _draw(self, width: int, height: int):
         fd(width)
         rt(90)

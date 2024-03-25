@@ -20,6 +20,7 @@ def generate_audio(text_to_translate: str) -> Path:
         speech_file_path = Config.output_audios.joinpath(str(random.randint(0, 1_000_000_000))).with_suffix('.mp3')
     if speech_file_path.exists():
         return speech_file_path
+    raise ValueError
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{Config.voice_id}"
 
     payload = {
