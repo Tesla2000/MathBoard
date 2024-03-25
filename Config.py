@@ -22,8 +22,8 @@ class _AudioElements:
 
 
 class Config(_VideoElements, _AudioElements):
+    base_language = 'pl'
     languages = ('uk', 'pl',)
-    line_width = 3
     font_size = 12
     font_path = "DejaVuSans"
     color = "black"
@@ -31,8 +31,8 @@ class Config(_VideoElements, _AudioElements):
     default_width = 50
     symbol_write_speed = 10
     minimal_border_width = 7
+    line_width = 3
     width(line_width)
-    # screensize(1000, 600)
     start_x = -640
     # start_x = -300
     start_y = 280
@@ -51,6 +51,7 @@ class Config(_VideoElements, _AudioElements):
     first_frame = root / f"first_frame{image_format}"
     final_videos = root / "final_videos"
     scripts_package = root / "scripts"
+    translations = root / "translations"
     output_videos.mkdir(exist_ok=True)
     images.mkdir(exist_ok=True)
     last_frames.mkdir(exist_ok=True)
@@ -62,6 +63,7 @@ class Config(_VideoElements, _AudioElements):
     output_audios.mkdir(exist_ok=True)
     last_frames.mkdir(exist_ok=True)
     images.mkdir(exist_ok=True)
+    translations.mkdir(exist_ok=True)
 
     @staticmethod
     def audio_name_normalization(text: str) -> str:

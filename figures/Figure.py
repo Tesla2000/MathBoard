@@ -59,6 +59,7 @@ class Figure(ABC):
         from figures.Emphasize import Emphasize
         color("white")
         if isinstance(self, Emphasize):
+            prev_color = self.color
             self.color = "white"
         self.draw(
             width=width,
@@ -67,6 +68,8 @@ class Figure(ABC):
             border_height=border_height,
         )
         color(Config.color)
+        if isinstance(self, Emphasize):
+            self.color = prev_color
 
     def undo_no_record(self,
                        width: int = None,

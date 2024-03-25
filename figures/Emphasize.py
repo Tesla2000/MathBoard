@@ -1,4 +1,4 @@
-from turtle import color
+from turtle import color as c, width as w
 
 from Config import Config
 from figures.Figure import Figure
@@ -20,16 +20,18 @@ class Emphasize(Figure):
         border_width: int = None,
         border_height: int = None,
     ):
-        self.x_coor = self.inner.x_coor - (Config.line_width + 1)
-        self.y_coor = self.inner.y_coor + (Config.line_width + 1)
+        self.x_coor = self.inner.x_coor - Config.line_width
+        self.y_coor = self.inner.y_coor + Config.line_width
         self.width = self.inner.width
         self.height = self.inner.height
+        w(1)
         super().draw(width, height, border_width, border_height)
+        w(Config.line_width)
 
     def _draw(self, width: int, height: int):
-        color(self.color)
-        self._draw_rectangle(width + 2 * (Config.line_width + 1), height + 2 * (Config.line_width + 1))
-        color(Config.color)
+        c(self.color)
+        self._draw_rectangle(width + 2 * Config.line_width, height + 2 * Config.line_width)
+        c(Config.color)
 
     def _draw_rectangle(self, width: int, height: int):
         for _ in range(2):

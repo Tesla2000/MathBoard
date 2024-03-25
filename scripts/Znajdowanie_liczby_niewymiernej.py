@@ -1,5 +1,4 @@
 from Config import Config
-from PassedVariables import PassedVariables
 from figures.Blank import Blank
 from figures.Eight import Eight
 from figures.Emphasize import Emphasize
@@ -17,7 +16,7 @@ from figures.Text import Text
 from figures.Three import Three
 from figures.Two import Two
 
-PassedVariables.texts_to_translate = (
+texts_to_translate = (
     "Cześć, pokażę Ci dzisiaj, jak sprawdzić, czy liczba jest niewymierna. W pierwszym etapie musimy przekształcić wszystkie liczby złożone na ich czynniki pierwsze.",
     "Kolejnym krokiem jest zamiana pierwiastka na potęgę.",
     "Następnie przenosimy wykładnik z ułamka na licznik i mianownik.",
@@ -192,8 +191,8 @@ action_spaces = [
         figures[0][7].draw,
         figures[0][8].draw,
         (e1 := Emphasize(figures[0][6].numerator)).draw,
-        (e2 := Emphasize(figures[0][6].denominator, color="blue")).draw,
         (e3 := Emphasize(figures[0][8].numerator)).draw,
+        (e2 := Emphasize(figures[0][6].denominator, color="blue")).draw,
         (e4 := Emphasize(figures[0][8].denominator, color="blue")).draw,
     ],
     [
