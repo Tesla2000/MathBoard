@@ -1,5 +1,6 @@
 import atexit
 import json
+import os
 from collections import defaultdict
 
 import deepl
@@ -27,8 +28,9 @@ def translate(text: str) -> str:
 
 
 @atexit.register
-def save_json():
-    print("NO KILL! Saving...")
+def save_translations():
+    print("NO KILL! Saving translations...")
     for language, translations in translated_texts.items():
-        Config.translations.joinpath(language).with_suffix(".json").write_text(json.dumps(translations, indent=2))
+        Config.temp_translations.write_text(json.dumps(translations, indent=2))
+        os.replace(Config.temp_translations, Config.translations.joinpath(language).with_suffix(".json"))
     print("Saved.")

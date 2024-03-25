@@ -23,7 +23,10 @@ class _AudioElements:
 
 class Config(_VideoElements, _AudioElements):
     base_language = 'pl'
-    languages = ('uk', 'pl',)
+    languages = (
+        'uk',
+        'pl',
+    )
     font_size = 12
     font_path = "DejaVuSans"
     color = "black"
@@ -38,20 +41,31 @@ class Config(_VideoElements, _AudioElements):
     start_y = 280
 
     root = Path(__file__).parent
-    deepL_token = root.joinpath("deepL_token").read_text()
-    open_ai_token = root.joinpath("open_ai_token").read_text()
-    os.environ.setdefault("OPENAI_API_KEY", open_ai_token)
-    temporary_picture = root / ".ps"
-    temp_filename = str(root / ".mp4")
     image_format = ".jpg"
     images = root / "images"
     output_videos = root / "output_videos"
     output_audios = root / "output_audios"
     last_frames = root / "last_frames"
-    first_frame = root / f"first_frame{image_format}"
     final_videos = root / "final_videos"
     scripts_package = root / "scripts"
     translations = root / "translations"
+    audio_paths = root / "audio_paths.json"
+
+    temporary_files = root / "temporary_files"
+    temporary_picture = temporary_files / ".ps"
+    temp_translations = temporary_files / "translations.json"
+    first_frame = temporary_files / f"first_frame{image_format}"
+    temp_filename = str(temporary_files / ".mp4")
+    temp_audio_paths = temporary_files / "audio_paths.json"
+
+    tokens = root / "api_keys"
+    deepL_token = tokens.joinpath("deepL_token").read_text()
+    open_ai_token = tokens.joinpath("open_ai_token").read_text()
+    elevenlabs_api_key = tokens.joinpath("elevenlabs").read_text()
+    os.environ.setdefault("OPENAI_API_KEY", open_ai_token)
+
+    temporary_files.mkdir(exist_ok=True)
+    tokens.mkdir(exist_ok=True)
     output_videos.mkdir(exist_ok=True)
     images.mkdir(exist_ok=True)
     last_frames.mkdir(exist_ok=True)

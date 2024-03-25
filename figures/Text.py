@@ -30,12 +30,12 @@ class Text(Figure):
         border_width: int = None,
         border_height: int = None,
     ):
-        self.text = translate(self.text)
+        text = translate(self.text)
         PassedVariables.texts.append(
             (
                 self.x_coor - Config.start_x,
                 Config.start_y - self.y_coor,
-                self.text,
+                text,
                 self.font_size,
             )
         )

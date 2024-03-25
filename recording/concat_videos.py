@@ -8,6 +8,7 @@ from moviepy.video.io.VideoFileClip import VideoFileClip
 
 from Config import Config
 from PassedVariables import PassedVariables
+from audio.generate_audio import audio_paths
 from recording.create_video_from_frame import create_video_from_frame
 
 
@@ -27,7 +28,7 @@ def concat_videos(delete_images: bool = True):
             map(
                 str,
                 map(
-                    Config.output_audios.joinpath,
+                    audio_paths.get,
                     map(
                         Config.audio_name_normalization,
                         PassedVariables.texts_to_translate,

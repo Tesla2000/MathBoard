@@ -17,7 +17,7 @@ if __name__ == "__main__":
             Config.lesson_name,
         )
         action_spaces = module.action_spaces
-        PassedVariables.texts_to_translate = module.texts_to_translate
+        PassedVariables.texts_to_translate = list(module.texts_to_translate)
         first_iteration = True
         for action_space in action_spaces:
             for action in action_space:
@@ -31,8 +31,10 @@ if __name__ == "__main__":
                 shutil.rmtree(Config.images)
                 Config.images.mkdir()
             pass
-        for text_to_translate in PassedVariables.texts_to_translate:
-            generate_audio(translate(text_to_translate))
+        for index, text_to_translate in enumerate(PassedVariables.texts_to_translate):
+            translation = translate(text_to_translate)
+            PassedVariables.texts_to_translate[index] = translation
+            generate_audio(translation)
         concat_videos()
         PassedVariables.reset()
         reset()
