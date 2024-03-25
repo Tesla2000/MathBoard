@@ -1,5 +1,4 @@
 import shutil
-from turtle import reset, width
 
 from Config import Config
 from PassedVariables import PassedVariables
@@ -7,6 +6,7 @@ from audio.generate_audio import generate_audio
 from recording.concat2video import concat2video
 from recording.concat_videos import concat_videos
 from recording.save_screen import save_screen
+from state_reset import state_reset
 from translation import translate
 
 if __name__ == "__main__":
@@ -36,6 +36,4 @@ if __name__ == "__main__":
             PassedVariables.texts_to_translate[index] = translation
             generate_audio(translation)
         concat_videos()
-        PassedVariables.reset()
-        reset()
-        width(Config.line_width)
+        state_reset()
