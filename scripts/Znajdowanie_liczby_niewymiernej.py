@@ -7,7 +7,7 @@ from figures.Numbers.Number import Number
 from figures.Parenthesized import Parenthesized
 from figures.RaiseToPower import RaiseToPower
 from figures.Root import Root
-from figures.Sequence import Sequence
+from fractions import Fraction as mathFraction
 from figures.Text import Text
 
 texts_to_translate = (
@@ -66,14 +66,7 @@ text = Text(text=texts[1])
 figures = [
     [
         Root(
-            Fraction(
-                Sequence(
-                    Blank(width=Config.default_width // 2),
-                    Number.from_int(8),
-                    Blank(width=Config.default_width // 2),
-                ),
-                Number.from_int(49),
-            ),
+            Number.from_fraction(mathFraction(8, 49)),
             width=200,
             height=row_height,
         ),

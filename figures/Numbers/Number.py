@@ -1,7 +1,11 @@
 from abc import ABC
+from fractions import Fraction as mathFraction
 from typing import Self
 
+from Config import Config
+from ..Blank import Blank
 from ..Figure import Figure
+from ..Fraction import Fraction
 from ..Minus import Minus
 from ..Sequence import Sequence
 
@@ -22,5 +26,54 @@ class Number(Figure, ABC):
     def from_int(cls, value: int, *args, **kwargs) -> Self:
         if value in range(10):
             return next(number for number in Number.__subclasses__() if number.value == value)(*args, **kwargs)
-        return Sequence(*([Minus(*args, *kwargs)] if value < 0 else []), *tuple(cls.from_int(digit, *args, **kwargs) for digit in _number_to_digits(value)))
+        if value in range(-9, 0):
+            return next(Sequence(*(Minus(), number()), *args, **kwargs) for number in Number.__subclasses__() if
+                        number.value == value)
+        return Sequence(*([Minus()] if value < 0 else []),
+                        *tuple(cls.from_int(digit) for digit in _number_to_digits(value)), *args, *kwargs)
 
+    @classmethod
+    def from_fraction(cls, value: mathFraction, *args, **kwargs) -> Self:
+        if len(str(abs(value.numerator))) == len(str(abs(value.denominator))):
+            if value.numerator * value.denominator < 0:
+                figure = Fraction(
+                    cls.from_int(abs(value.numerator)),
+                    cls.from_int(abs(value.denominator)),
+                )
+                figure = Sequence(*(Minus(), figure), *args, **kwargs)
+            else:
+                figure = Fraction(
+                    cls.from_int(abs(value.numerator)),
+                    cls.from_int(abs(value.denominator),), *args, **kwargs
+                )
+        numerator_length = len(str(abs(value.numerator)))
+        denominator_length = len(str(abs(value.denominator)))
+        difference = abs(numerator_length - denominator_length)
+        blank_width = Config.default_width * difference / 2
+        if numerator_length < denominator_length:
+            numerator = Sequence(*(Blank(width=blank_width), *(cls.from_int(abs(value.numerator)).figures if numerator_length > 1 else (cls.from_int(abs(value.numerator)),)), Blank(width=blank_width)))
+            if value.numerator * value.denominator < 0:
+                figure = Fraction(
+                    numerator,
+                    cls.from_int(abs(value.denominator)),
+                )
+                figure = Sequence(*(Minus(), figure), *args, **kwargs)
+            else:
+                figure = Fraction(
+                    numerator,
+                    cls.from_int(abs(value.denominator),), *args, **kwargs
+                )
+        if numerator_length > denominator_length:
+            denominator = Sequence(*(Blank(width=blank_width), *(cls.from_int(abs(value.denominator)).figures if denominator_length > 1 else (cls.from_int(abs(value.denominator)),)), Blank(width=blank_width)))
+            if value.numerator * value.denominator < 0:
+                figure = Fraction(
+                    cls.from_int(abs(value.numerator)),
+                    denominator,
+                )
+                figure = Sequence(*(Minus(), figure), *args, **kwargs)
+            else:
+                figure = Fraction(
+                    cls.from_int(abs(value.numerator)),
+                    denominator, *args, **kwargs
+                )
+        return figure
