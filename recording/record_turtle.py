@@ -7,7 +7,7 @@ from recording.save_screen import save_screen
 def _record_wrapper(function):
     def inner(*args, **kwargs):
         result = function(*args, **kwargs)
-        if PassedVariables.record:
+        if PassedVariables.record and not PassedVariables.supress_recording:
             save_screen()
         return result
 
@@ -16,7 +16,7 @@ def _record_wrapper(function):
 
 def _stop_recording_wrapper(function):
     def inner(*args, **kwargs):
-        PassedVariables.record = False
+        PassedVariables.turn_recording_off()
         return function(*args, **kwargs)
 
     return inner
@@ -24,7 +24,7 @@ def _stop_recording_wrapper(function):
 
 def _start_recording_wrapper(function):
     def inner(*args, **kwargs):
-        PassedVariables.record = True
+        PassedVariables.turn_recording_on()
         return function(*args, **kwargs)
 
     return inner

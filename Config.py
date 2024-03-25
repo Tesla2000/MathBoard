@@ -8,7 +8,7 @@ from turtle import width
 class _VideoElements:
     lesson_name = "Znajdowanie_liczby_niewymiernej"
     script = f"{lesson_name}.py"
-    final_video_name = f"{lesson_name}.mp4"
+    final_video_name = (lesson_name + "_{}.mp4").format
 
 
 class _AudioElements:
@@ -22,6 +22,11 @@ class _AudioElements:
 
 
 class Config(_VideoElements, _AudioElements):
+    base_language = 'pl'
+    languages = (
+        'uk',
+        'pl',
+    )
     font_size = 12
     font_path = "DejaVuSans"
     color = "black"
@@ -29,24 +34,38 @@ class Config(_VideoElements, _AudioElements):
     default_width = 50
     symbol_write_speed = 10
     minimal_border_width = 7
-    width(3)
-    # screensize(1000, 600)
+    line_width = 3
+    width(line_width)
     start_x = -640
     # start_x = -300
     start_y = 280
 
     root = Path(__file__).parent
-    open_ai_token = root.joinpath("open_ai_token").read_text()
-    os.environ.setdefault("OPENAI_API_KEY", open_ai_token)
-    temporary_picture = root / ".ps"
-    temp_filename = str(root / ".mp4")
+    image_format = ".jpg"
     images = root / "images"
     output_videos = root / "output_videos"
     output_audios = root / "output_audios"
     last_frames = root / "last_frames"
-    first_frame = root / "first_frame.jpg"
     final_videos = root / "final_videos"
     scripts_package = root / "scripts"
+    translations = root / "translations"
+    audio_paths = root / "audio_paths.json"
+
+    temporary_files = root / "temporary_files"
+    temporary_picture = temporary_files / ".ps"
+    temp_translations = temporary_files / "translations.json"
+    first_frame = temporary_files / f"first_frame{image_format}"
+    temp_filename = str(temporary_files / ".mp4")
+    temp_audio_paths = temporary_files / "audio_paths.json"
+
+    tokens = root / "api_keys"
+    deepL_token = tokens.joinpath("deepL_token").read_text()
+    open_ai_token = tokens.joinpath("open_ai_token").read_text()
+    elevenlabs_api_key = tokens.joinpath("elevenlabs").read_text()
+    os.environ.setdefault("OPENAI_API_KEY", open_ai_token)
+
+    temporary_files.mkdir(exist_ok=True)
+    tokens.mkdir(exist_ok=True)
     output_videos.mkdir(exist_ok=True)
     images.mkdir(exist_ok=True)
     last_frames.mkdir(exist_ok=True)
@@ -58,6 +77,7 @@ class Config(_VideoElements, _AudioElements):
     output_audios.mkdir(exist_ok=True)
     last_frames.mkdir(exist_ok=True)
     images.mkdir(exist_ok=True)
+    translations.mkdir(exist_ok=True)
 
     @staticmethod
     def audio_name_normalization(text: str) -> str:

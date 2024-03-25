@@ -1,5 +1,4 @@
 from Config import Config
-from PassedVariables import PassedVariables
 from figures.Blank import Blank
 from figures.Eight import Eight
 from figures.Emphasize import Emphasize
@@ -17,13 +16,13 @@ from figures.Text import Text
 from figures.Three import Three
 from figures.Two import Two
 
-PassedVariables.texts_to_translate = (
+texts_to_translate = (
     "Cześć, pokażę Ci dzisiaj, jak sprawdzić, czy liczba jest niewymierna. W pierwszym etapie musimy przekształcić wszystkie liczby złożone na ich czynniki pierwsze.",
     "Kolejnym krokiem jest zamiana pierwiastka na potęgę.",
     "Następnie przenosimy wykładnik z ułamka na licznik i mianownik.",
     "Upraszczamy potęgi poprzez mnożenie wykładników.",
     "W ostatnim etapie musimy sprawdzić, czy wykładniki są liczbami całkowitymi. Jeśli tak, oznacza to, że liczba jest wymierna. Jeśli nie, liczba jest niewymierna.",
-    "Jak widać, w tym wypadku wykładnik dwie trzecie jest nieskracalny i, co za tym idzie, nie jest liczbą całkowitą. Zatem liczba jest niewymierna.",
+    "Jak widać, w tym wypadku wykładnik trzy drugie jest nieskracalny i, co za tym idzie, nie jest liczbą całkowitą. Zatem liczba jest niewymierna.",
     "Dziękuję za uwagę."
 )
 texts = {
@@ -154,29 +153,53 @@ action_spaces = [
         text.draw,
         figures[0][1].draw,
         figures[0][2].draw,
+        (e1 := Emphasize(figures[0][0].radical.numerator)).draw,
+        (e2 := Emphasize(figures[0][2].radical.numerator)).draw,
+        (e3 := Emphasize(figures[0][0].radical.denominator, color="blue")).draw,
+        (e4 := Emphasize(figures[0][2].radical.denominator, color="blue")).draw,
     ],
     [
         Text.clear,
         text.gen_add_text(texts[3]),
         text.draw,
+        e1.undo_no_record,
+        e2.undo_no_record,
+        e3.undo_no_record,
+        e4.undo_no_record,
         figures[0][3].draw,
         figures[0][4].draw,
+        (e1 := Emphasize(figures[0][2].index)).draw,
+        (e4 := Emphasize(figures[0][4].exponent)).draw,
     ],
     [
         Text.clear,
         text.gen_add_text(texts[4]),
         text.draw,
+        e1.undo_no_record,
         figures[0][5].draw,
         figures[0][6].draw,
+        (e1 := Emphasize(figures[0][6].numerator.exponent)).draw,
+        (e3 := Emphasize(figures[0][6].denominator.exponent)).draw,
     ],
     [
         Text.clear,
         text.gen_add_text(texts[5]),
         text.draw,
+        e1.undo_no_record,
+        e3.undo_no_record,
+        e4.undo_no_record,
         figures[0][7].draw,
         figures[0][8].draw,
+        (e1 := Emphasize(figures[0][6].numerator)).draw,
+        (e3 := Emphasize(figures[0][8].numerator)).draw,
+        (e2 := Emphasize(figures[0][6].denominator, color="blue")).draw,
+        (e4 := Emphasize(figures[0][8].denominator, color="blue")).draw,
     ],
     [
+        e1.undo_no_record,
+        e2.undo_no_record,
+        e3.undo_no_record,
+        e4.undo_no_record,
         figures[0][9].draw,
         figures[-1][0].draw,
         Emphasize(figures[-1][0].numerator.exponent).draw,

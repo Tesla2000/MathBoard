@@ -1,10 +1,8 @@
-from math import cos, sin, radians
-from turtle import color
+from turtle import color as c, width as w
 
 from Config import Config
-from PassedVariables import PassedVariables
 from figures.Figure import Figure
-from recording.record_turtle import pu, goto, pd
+from recording.record_turtle import fd, rt
 
 
 class Emphasize(Figure):
@@ -22,25 +20,22 @@ class Emphasize(Figure):
         border_width: int = None,
         border_height: int = None,
     ):
-        self.x_coor = self.inner.x_coor
-        self.y_coor = self.inner.y_coor
+        self.x_coor = self.inner.x_coor - Config.line_width
+        self.y_coor = self.inner.y_coor + Config.line_width
         self.width = self.inner.width
         self.height = self.inner.height
+        w(1)
         super().draw(width, height, border_width, border_height)
+        w(Config.line_width)
 
     def _draw(self, width: int, height: int):
-        color(self.color)
-        self._draw_ellipse(self.inner.width * 3 // 4, self.inner.height * 3 // 4)
-        color(Config.color)
+        c(self.color)
+        self._draw_rectangle(width + 2 * Config.line_width, height + 2 * Config.line_width)
+        c(Config.color)
 
-    def _draw_ellipse(self, a, b):
-        pu()
-        goto(self.x_coor + self.width // 2 + a, self.y_coor - self.height // 2)
-        pd()
-        for i in range(361):
-            PassedVariables.record = False
-            if i % 90 == 0:
-                PassedVariables.record = True
-            x = self.x_coor + a * cos(radians(i)) + self.width // 2
-            y = self.y_coor + b * sin(radians(i)) - self.height // 2
-            goto(x, y)
+    def _draw_rectangle(self, width: int, height: int):
+        for _ in range(2):
+            fd(width)
+            rt(90)
+            fd(height)
+            rt(90)

@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from turtle import color
 
 from Config import Config
+from PassedVariables import PassedVariables
 from figures import moveto
 from recording.record_turtle import pu, pd
 
@@ -38,6 +39,8 @@ class Figure(ABC):
             width = self.width
         if height is None:
             height = self.height
+        self.width = width
+        self.height = height
         if border_width is None and self.border_width is True:
             border_width = Config.minimal_border_width
         if border_height is None and self.border_height is True:
@@ -53,7 +56,11 @@ class Figure(ABC):
         border_width: int = None,
         border_height: int = None,
     ):
+        from figures.Emphasize import Emphasize
         color("white")
+        if isinstance(self, Emphasize):
+            prev_color = self.color
+            self.color = "white"
         self.draw(
             width=width,
             height=height,
@@ -61,6 +68,18 @@ class Figure(ABC):
             border_height=border_height,
         )
         color(Config.color)
+        if isinstance(self, Emphasize):
+            self.color = prev_color
+
+    def undo_no_record(self,
+                       width: int = None,
+                       height: int = None,
+                       border_width: int = None,
+                       border_height: int = None,
+                       ):
+        PassedVariables.supress_recording = True
+        self.undo(width, height, border_width, border_height)
+        PassedVariables.supress_recording = False
 
     @abstractmethod
     def _draw(self, width: int, height: int):

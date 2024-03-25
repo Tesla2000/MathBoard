@@ -8,6 +8,7 @@ from moviepy.video.io.VideoFileClip import VideoFileClip
 
 from Config import Config
 from PassedVariables import PassedVariables
+from audio.generate_audio import audio_paths
 from recording.create_video_from_frame import create_video_from_frame
 
 
@@ -27,7 +28,7 @@ def concat_videos(delete_images: bool = True):
             map(
                 str,
                 map(
-                    Config.output_audios.joinpath,
+                    audio_paths.get,
                     map(
                         Config.audio_name_normalization,
                         PassedVariables.texts_to_translate,
@@ -59,7 +60,7 @@ def concat_videos(delete_images: bool = True):
             )
     final_clip = concatenate_videoclips(final_clips)
     final_clip.write_videofile(
-        str(Config.final_videos.joinpath(Config.final_video_name)),
+        str(Config.final_videos.joinpath(Config.final_video_name(PassedVariables.language))),
         codec="libx264",
         fps=24,
     )
@@ -71,6 +72,8 @@ def concat_videos(delete_images: bool = True):
     if delete_images:
         shutil.rmtree(Config.output_videos)
         shutil.rmtree(Config.last_frames)
+        Config.output_videos.mkdir()
+        Config.last_frames.mkdir()
 
 
 if __name__ == "__main__":

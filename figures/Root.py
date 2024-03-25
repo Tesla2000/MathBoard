@@ -38,8 +38,8 @@ class Root(Figure):
         x_coor = pos()[0]
         width = self.width + self.x_coor - x_coor
         fd(width)
-        self.radical.x_coor = x_coor
+        self.radical.x_coor = x_coor + Config.minimal_border_width
         self.radical.y_coor = self.y_coor - Config.minimal_border_width
         self.radical.height = self.height - Config.minimal_border_width
-        self.radical.width = width
+        self.radical.width = width - Config.minimal_border_width
         self.radical.draw()
