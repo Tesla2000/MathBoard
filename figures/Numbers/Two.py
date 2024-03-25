@@ -1,9 +1,9 @@
 from recording.record_turtle import fd, rt, bk, lt
 
-from .Number import Number
+from .Digit import Digit
 
 
-class Two(Number):
+class Two(Digit):
     value = 2
     def _draw(self, width: int, height: int):
         fd(width)

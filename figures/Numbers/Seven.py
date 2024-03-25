@@ -1,10 +1,10 @@
 from math import pi, atan, sqrt
 from recording.record_turtle import fd, rt, bk, setheading
 
-from .Number import Number
+from .Digit import Digit
 
 
-class Seven(Number):
+class Seven(Digit):
     value = 7
     def _draw(self, width: int, height: int):
         fd(width)

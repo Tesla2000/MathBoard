@@ -3,7 +3,7 @@ from figures.Blank import Blank
 from figures.Emphasize import Emphasize
 from figures.Equals import Equals
 from figures.Fraction import Fraction
-from figures.Numbers.Number import Number
+from figures.Number import Number
 from figures.Parenthesized import Parenthesized
 from figures.RaiseToPower import RaiseToPower
 from figures.Root import Root

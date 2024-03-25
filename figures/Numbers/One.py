@@ -1,9 +1,9 @@
 from Config import Config
-from .Number import Number
+from .Digit import Digit
 from recording.record_turtle import pu, pd, fd, rt, bk
 
 
-class One(Number):
+class One(Digit):
     value = 1
     width = Config.default_width // 2
 
