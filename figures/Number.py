@@ -31,11 +31,11 @@ class Number(Figure, ABC):
             return next(
                 Sequence(*(Minus(), number()), *args, **kwargs)
                 for number in Digit.__subclasses__()
-                if number.value == value
+                if number.value == abs(value)
             )
         return Sequence(
             *([Minus()] if value < 0 else []),
-            *tuple(cls.from_int(digit) for digit in _number_to_digits(value)),
+            *tuple(cls.from_int(digit) for digit in _number_to_digits(abs(value))),
             *args,
             *kwargs
         )
