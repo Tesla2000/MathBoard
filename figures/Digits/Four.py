@@ -1,10 +1,11 @@
 from recording.record_turtle import pu, fd, rt, bk, lt
 
-from .Number import Number
+from .Digit import Digit
 
 
-class Four(Number):
+class Four(Digit):
     value = 4
+
     def _draw(self, width: int, height: int):
         rt(90)
         fd(height // 2)

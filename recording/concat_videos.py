@@ -60,7 +60,11 @@ def concat_videos(delete_images: bool = True):
             )
     final_clip = concatenate_videoclips(final_clips)
     final_clip.write_videofile(
-        str(Config.final_videos.joinpath(Config.final_video_name(PassedVariables.language))),
+        str(
+            Config.final_videos.joinpath(
+                Config.final_video_name(PassedVariables.language)
+            )
+        ),
         codec="libx264",
         fps=24,
     )

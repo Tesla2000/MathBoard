@@ -57,6 +57,7 @@ class Figure(ABC):
         border_height: int = None,
     ):
         from figures.Emphasize import Emphasize
+
         color("white")
         if isinstance(self, Emphasize):
             prev_color = self.color
@@ -71,12 +72,13 @@ class Figure(ABC):
         if isinstance(self, Emphasize):
             self.color = prev_color
 
-    def undo_no_record(self,
-                       width: int = None,
-                       height: int = None,
-                       border_width: int = None,
-                       border_height: int = None,
-                       ):
+    def undo_no_record(
+        self,
+        width: int = None,
+        height: int = None,
+        border_width: int = None,
+        border_height: int = None,
+    ):
         PassedVariables.supress_recording = True
         self.undo(width, height, border_width, border_height)
         PassedVariables.supress_recording = False
