@@ -1,4 +1,6 @@
 import shutil
+from time import sleep
+from turtle import reset, width
 
 from Config import Config
 from PassedVariables import PassedVariables
@@ -22,6 +24,8 @@ if __name__ == "__main__":
         for action_space in action_spaces:
             for action in action_space:
                 action()
+            if Config.debug:
+                continue
             if not first_iteration:
                 concat2video()
             else:
@@ -30,7 +34,8 @@ if __name__ == "__main__":
                 save_screen(Config.first_frame)
                 shutil.rmtree(Config.images)
                 Config.images.mkdir()
-            pass
+        if Config.debug:
+            sleep(3)
         for index, text_to_translate in enumerate(PassedVariables.texts_to_translate):
             translation = translate(text_to_translate)
             PassedVariables.texts_to_translate[index] = translation

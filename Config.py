@@ -2,7 +2,7 @@ import os
 import re
 import shutil
 from pathlib import Path
-from turtle import width
+from turtle import width, speed
 
 
 class _VideoElements:
@@ -36,9 +36,11 @@ class Config(_VideoElements, _AudioElements):
     minimal_border_width = 7
     line_width = 3
     width(line_width)
+    speed(0)
     start_x = -640
     # start_x = -300
     start_y = 280
+    debug = False
 
     root = Path(__file__).parent
     image_format = ".jpg"
