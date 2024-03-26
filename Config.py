@@ -6,7 +6,7 @@ from turtle import width, speed
 
 
 class _VideoElements:
-    lesson_name = "Znajdowanie_liczby_niewymiernej"
+    lesson_name = "Obliczanie_logarytmów_2"
     script = f"{lesson_name}.py"
     final_video_name = (lesson_name + "_{}.mp4").format
 
@@ -24,7 +24,7 @@ class _AudioElements:
 class Config(_VideoElements, _AudioElements):
     base_language = "pl"
     languages = (
-        "uk",
+        # "uk",
         "pl",
     )
     font_size = 12

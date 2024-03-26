@@ -1,6 +1,11 @@
 class CommonAudios:
+    LOG_1 = "Logarytm o wartości logarytmowanej 1 zawsze przyjmuje wartość 0."
+    FRAC_IN_LOG_DIVISION = "Wartością logarytmowaną jest ułamek. Rozdzielamy logarytm na różnicę logarytmu licznika i mianownika."
+    HOW_TO_CALC_LOG = "Cześć, pokażę Ci dzisiaj, jak obliczać logarytmy. W pierwszym etapie musimy przekształcić wszystkie liczby złożone na ich czynniki pierwsze."
     ROOT2POWER = "Kolejnym krokiem jest zamiana pierwiastka na potęgę."
-    EXP2NUMERATOR_AND_DENOMINATOR = "Następnie przenosimy wykładnik z ułamka na licznik i mianownik."
+    EXP2NUMERATOR_AND_DENOMINATOR = (
+        "Następnie przenosimy wykładnik z ułamka na licznik i mianownik."
+    )
     EXP_MULTIPLICATION = "Upraszczamy potęgi poprzez mnożenie wykładników."
     THANKU = "Dziękuję za uwagę."
     NEXT_FRACTION_DIVISION = "Dalej równanie rozwiązuje się dzieleniem ułamków."

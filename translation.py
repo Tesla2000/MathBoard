@@ -33,6 +33,8 @@ def _translate_line(line: str) -> str:
         prefix = ""
     line = re.sub(r"^[.\d> ]+", "", line)
     if line not in translated_texts[PassedVariables.language]:
+        if Config.debug:
+            raise ValueError
         translated = _translator.translate_text(
             line, target_lang=PassedVariables.language, source_lang=Config.base_language
         ).text

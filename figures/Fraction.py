@@ -11,15 +11,17 @@ class Fraction(Figure):
         denominator: Figure,
         width: int = Config.default_width,
         height: int = Config.default_height,
+        numerator_height_factor: float = 0.5,
     ):
         super().__init__(width, height)
+        self.numerator_height_factor = numerator_height_factor
         self.numerator = numerator
         self.denominator = denominator
 
     def _draw(self, width: int, height: int):
         self.numerator.x_coor = self.x_coor
         self.numerator.y_coor = self.y_coor
-        self.numerator.draw(width, height // 2)
+        self.numerator.draw(width, int(height * self.numerator_height_factor))
         moveto(self.x_coor, self.y_coor)
         pu()
         rt(90)
@@ -31,4 +33,6 @@ class Fraction(Figure):
         self.denominator.y_coor = (
             self.y_coor - height // 2 - Config.minimal_border_width
         )
-        self.denominator.draw(width, height // 2)
+        self.denominator.draw(
+            width, height - int(height * self.numerator_height_factor)
+        )

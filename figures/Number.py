@@ -58,14 +58,22 @@ class Number(Figure, ABC):
         if len(str(abs(value.numerator))) == len(str(abs(value.denominator))):
             if value.numerator * value.denominator < 0:
                 figure = Fraction(
-                    cls.from_int(abs(value.numerator)) if value.numerator != 1 else One(centered=True),
-                    cls.from_int(abs(value.denominator)) if value.denominator != 1 else One(centered=True),
+                    cls.from_int(abs(value.numerator))
+                    if value.numerator != 1
+                    else One(centered=True),
+                    cls.from_int(abs(value.denominator))
+                    if value.denominator != 1
+                    else One(centered=True),
                 )
                 figure = Sequence(*(Minus(), figure), *args, **kwargs)
             else:
                 figure = Fraction(
-                    cls.from_int(abs(value.numerator)) if value.numerator != 1 else One(centered=True),
-                    cls.from_int(abs(value.denominator)) if value.denominator != 1 else One(centered=True),
+                    cls.from_int(abs(value.numerator))
+                    if value.numerator != 1
+                    else One(centered=True),
+                    cls.from_int(abs(value.denominator))
+                    if value.denominator != 1
+                    else One(centered=True),
                     *args,
                     **kwargs
                 )
@@ -80,7 +88,11 @@ class Number(Figure, ABC):
                     *(
                         cls.from_int(abs(value.numerator)).figures
                         if numerator_length > 1
-                        else (cls.from_int(abs(value.numerator)) if value.numerator != 1 else One(centered=True),)
+                        else (
+                            cls.from_int(abs(value.numerator))
+                            if value.numerator != 1
+                            else One(centered=True),
+                        )
                     ),
                     Blank(width=blank_width),
                 )
@@ -88,7 +100,9 @@ class Number(Figure, ABC):
             if value.numerator * value.denominator < 0:
                 figure = Fraction(
                     numerator,
-                    cls.from_int(abs(value.denominator)) if value.denominator != 1 else One(centered=True),
+                    cls.from_int(abs(value.denominator))
+                    if value.denominator != 1
+                    else One(centered=True),
                 )
                 figure = Sequence(*(Minus(), figure), *args, **kwargs)
             else:
@@ -107,19 +121,30 @@ class Number(Figure, ABC):
                     *(
                         cls.from_int(abs(value.denominator)).figures
                         if denominator_length > 1
-                        else (cls.from_int(abs(value.denominator)) if value.denominator != 1 else One(centered=True),)
+                        else (
+                            cls.from_int(abs(value.denominator))
+                            if value.denominator != 1
+                            else One(centered=True),
+                        )
                     ),
                     Blank(width=blank_width),
                 )
             )
             if value.numerator * value.denominator < 0:
                 figure = Fraction(
-                    cls.from_int(abs(value.numerator)) if value.numerator != 1 else One(centered=True),
+                    cls.from_int(abs(value.numerator))
+                    if value.numerator != 1
+                    else One(centered=True),
                     denominator,
                 )
                 figure = Sequence(*(Minus(), figure), *args, **kwargs)
             else:
                 figure = Fraction(
-                    cls.from_int(abs(value.numerator)) if value.numerator != 1 else One(centered=True), denominator, *args, **kwargs
+                    cls.from_int(abs(value.numerator))
+                    if value.numerator != 1
+                    else One(centered=True),
+                    denominator,
+                    *args,
+                    **kwargs
                 )
         return figure

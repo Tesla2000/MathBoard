@@ -1,6 +1,5 @@
 import shutil
 from time import sleep
-from turtle import reset, width
 
 from Config import Config
 from PassedVariables import PassedVariables
@@ -11,7 +10,8 @@ from recording.save_screen import save_screen
 from state_reset import state_reset
 from translation import translate
 
-if __name__ == "__main__":
+
+def main():
     for language in Config.languages:
         PassedVariables.language = language
         module = getattr(
@@ -36,9 +36,14 @@ if __name__ == "__main__":
                 Config.images.mkdir()
         if Config.debug:
             sleep(3)
+            return
         for index, text_to_translate in enumerate(PassedVariables.texts_to_translate):
             translation = translate(text_to_translate)
             PassedVariables.texts_to_translate[index] = translation
             generate_audio(translation)
         concat_videos()
         state_reset()
+
+
+if __name__ == "__main__":
+    main()

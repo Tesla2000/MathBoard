@@ -8,7 +8,11 @@ from recording.save_screen import save_screen
 def _record_wrapper(function):
     def inner(*args, **kwargs):
         result = function(*args, **kwargs)
-        if PassedVariables.record and not PassedVariables.supress_recording and not Config.debug:
+        if (
+            PassedVariables.record
+            and not PassedVariables.supress_recording
+            and not Config.debug
+        ):
             save_screen()
         return result
 
