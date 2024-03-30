@@ -6,7 +6,7 @@ from turtle import width, speed
 
 
 class _VideoElements:
-    lesson_name = "Dodawanie_ułamków"
+    lesson_name = "Znajdowanie_liczby_niewymiernej"
     script = f"{lesson_name}.py"
     final_video_name = (lesson_name + "_{}.mp4").format
 
@@ -25,7 +25,7 @@ class Config(_VideoElements, _AudioElements):
     base_language = "pl"
     languages = (
         "uk",
-        # "pl",
+        "pl",
     )
     font_size = 12
     font_path = "DejaVuSans"
@@ -42,8 +42,8 @@ class Config(_VideoElements, _AudioElements):
     start_y = 280
     # debug = True
     debug = False
-    # api_forbidden = True
-    api_forbidden = False
+    api_forbidden = True
+    # api_forbidden = False
 
     root = Path(__file__).parent
     image_format = ".jpg"
@@ -67,6 +67,7 @@ class Config(_VideoElements, _AudioElements):
     deepL_token = tokens.joinpath("deepL_token").read_text()
     open_ai_token = tokens.joinpath("open_ai_token").read_text()
     elevenlabs_api_key = tokens.joinpath("elevenlabs").read_text()
+    youtube_api_file = tokens.joinpath("google_client.json")
     os.environ.setdefault("OPENAI_API_KEY", open_ai_token)
 
     temporary_files.mkdir(exist_ok=True)

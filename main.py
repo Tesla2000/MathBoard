@@ -1,6 +1,7 @@
 import shutil
 from time import sleep
 
+from upload_video import upload_video
 from Config import Config
 from PassedVariables import PassedVariables
 from audio.generate_audio import generate_audio
@@ -41,7 +42,8 @@ def main():
             translation = translate(text_to_translate)
             PassedVariables.texts_to_translate[index] = translation
             generate_audio(translation)
-        concat_videos()
+        output_video_path = concat_videos()
+        upload_video(output_video_path, output_video_path.with_suffix('').name.replace('_', ' ').capitalize(), module.texts_to_translate[0])
         state_reset()
 
 

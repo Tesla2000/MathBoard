@@ -1,6 +1,7 @@
 import os
 import shutil
 from itertools import zip_longest, chain, repeat, islice
+from pathlib import Path
 
 from moviepy.audio.io.AudioFileClip import AudioFileClip
 from moviepy.video.compositing.concatenate import concatenate_videoclips
@@ -12,7 +13,7 @@ from audio.generate_audio import audio_paths
 from recording.create_video_from_frame import create_video_from_frame
 
 
-def concat_videos(delete_images: bool = True):
+def concat_videos(delete_images: bool = True) -> Path:
     video_clips = list(
         map(
             VideoFileClip,
@@ -59,12 +60,11 @@ def concat_videos(delete_images: bool = True):
                 )
             )
     final_clip = concatenate_videoclips(final_clips)
+    output_file_path = Config.final_videos.joinpath(
+        Config.final_video_name(PassedVariables.language)
+    )
     final_clip.write_videofile(
-        str(
-            Config.final_videos.joinpath(
-                Config.final_video_name(PassedVariables.language)
-            )
-        ),
+        str(output_file_path),
         codec="libx264",
         fps=24,
     )
@@ -78,6 +78,7 @@ def concat_videos(delete_images: bool = True):
         shutil.rmtree(Config.last_frames)
         Config.output_videos.mkdir()
         Config.last_frames.mkdir()
+    return output_file_path
 
 
 if __name__ == "__main__":
