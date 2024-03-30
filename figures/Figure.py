@@ -60,7 +60,8 @@ class Figure(ABC):
         border_height: int = None,
     ):
         c("white")
-        prev_color = self.color
+        if hasattr(self, 'color'):
+            prev_color = self.color
         self.color = "white"
         self.draw(
             width=width,
@@ -69,7 +70,8 @@ class Figure(ABC):
             border_height=border_height,
         )
         c(Config.color)
-        self.color = prev_color
+        if hasattr(self, 'color'):
+            self.color = prev_color
 
     def undo_no_record(
         self,

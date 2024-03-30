@@ -6,7 +6,7 @@ from turtle import width, speed
 
 
 class _VideoElements:
-    lesson_name = "Znajdowanie_liczby_niewymiernej"
+    lesson_name = "Dodawanie_ułamków"
     script = f"{lesson_name}.py"
     final_video_name = (lesson_name + "_{}.mp4").format
 
@@ -24,7 +24,7 @@ class _AudioElements:
 class Config(_VideoElements, _AudioElements):
     base_language = "pl"
     languages = (
-        "uk",
+        # "uk",
         "pl",
     )
     font_size = 12
@@ -68,6 +68,7 @@ class Config(_VideoElements, _AudioElements):
     open_ai_token = tokens.joinpath("open_ai_token").read_text()
     elevenlabs_api_key = tokens.joinpath("elevenlabs").read_text()
     youtube_api_file = tokens.joinpath("google_client.json")
+    youtube_auth = tokens.joinpath("upload_video.py-oauth2.json")
     os.environ.setdefault("OPENAI_API_KEY", open_ai_token)
 
     temporary_files.mkdir(exist_ok=True)
