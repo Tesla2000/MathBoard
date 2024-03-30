@@ -22,7 +22,7 @@ class Log(Figure):
         if self.base_length_factor is None:
             if isinstance(base, Sequence):
                 self.base_length_factor = 1 - (
-                    len(base.figures) / (3 + len(base.figures))
+                    len(base.figures) // (3 + len(base.figures))
                 )
             else:
                 self.base_length_factor = 0.75
@@ -60,7 +60,7 @@ class Log(Figure):
         self.base.x_coor = (
             x_coor + self.base_length_factor * width // 3 + Config.minimal_border_width
         )
-        self.base.y_coor = y_coor + height * self.base_height_factor / 2
+        self.base.y_coor = y_coor + height * self.base_height_factor // 2
         self.base.width = (1 - self.base_length_factor) * width
         self.base.height = height * self.base_height_factor
         self.base.draw()

@@ -6,14 +6,14 @@ from turtle import width, speed
 
 
 class _VideoElements:
-    lesson_name = "Obliczanie_logarytmów_2"
+    lesson_name = "Dodawanie_ułamków"
     script = f"{lesson_name}.py"
     final_video_name = (lesson_name + "_{}.mp4").format
 
 
 class _AudioElements:
-    similarity_boost = 1
-    stability = 1
+    similarity_boost = .9
+    stability = .9
     model_id = "eleven_multilingual_v2"
     voice_id = "2EiwWnXFnvU5JabPnv8n"
 
@@ -24,8 +24,8 @@ class _AudioElements:
 class Config(_VideoElements, _AudioElements):
     base_language = "pl"
     languages = (
-        # "uk",
-        "pl",
+        "uk",
+        # "pl",
     )
     font_size = 12
     font_path = "DejaVuSans"
@@ -40,7 +40,10 @@ class Config(_VideoElements, _AudioElements):
     start_x = -640
     # start_x = -300
     start_y = 280
+    # debug = True
     debug = False
+    # api_forbidden = True
+    api_forbidden = False
 
     root = Path(__file__).parent
     image_format = ".jpg"

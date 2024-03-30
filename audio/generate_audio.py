@@ -22,7 +22,7 @@ def generate_audio(text_to_translate: str) -> Path:
         ).with_suffix(".mp3")
     if speech_file_path.exists():
         return speech_file_path
-    if Config.debug:
+    if Config.debug or Config.api_forbidden:
         raise ValueError
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{Config.voice_id}"
 

@@ -1,4 +1,10 @@
 class CommonAudios:
+    NEW_FRACTION = "W wyniku działania otrzymujemy nowy ułamek."
+    MULTIPLICATION_IN_DENOMINATOR = "W mianowniku zapisujemy mnożenie mianowników."
+    BUTTERFLY_MULTIPLICATION = "W liczniku zapisujemy licznik pierwszego ułamka pomnożony z mianownikiem drugiego ułamka oraz licznik drugiego ułamka pomnożony z mianownikiem pierwszego ułamka."
+    WE_MULTIPLY = "Mnożymy."
+    WE_ADD = "Dodajemy."
+    WE_SIMPLIFY_FRACTION = "Skracamy ułamek."
     LOG_1 = "Logarytm o wartości logarytmowanej 1 zawsze przyjmuje wartość 0."
     FRAC_IN_LOG_DIVISION = "Wartością logarytmowaną jest ułamek. Rozdzielamy logarytm na różnicę logarytmu licznika i mianownika."
     HOW_TO_CALC_LOG = "Cześć, pokażę Ci dzisiaj, jak obliczać logarytmy. W pierwszym etapie musimy przekształcić wszystkie liczby złożone na ich czynniki pierwsze."

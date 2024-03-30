@@ -28,6 +28,7 @@ class Text(Figure):
         height: int = None,
         border_width: int = None,
         border_height: int = None,
+        color: str = None,
     ):
         text = translate(self.text)
         PassedVariables.texts.append(

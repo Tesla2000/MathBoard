@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from turtle import color
+from turtle import color as c
 
 from Config import Config
 from PassedVariables import PassedVariables
@@ -33,12 +33,15 @@ class Figure(ABC):
         height: int = None,
         border_width: int = None,
         border_height: int = None,
+        color: str = None,
     ):
+        if color is not None:
+            c(color)
         moveto(self.x_coor, self.y_coor)
         if width is None:
-            width = self.width
+            width = round(self.width)
         if height is None:
-            height = self.height
+            height = round(self.height)
         self.width = width
         self.height = height
         if border_width is None and self.border_width is True:
@@ -46,7 +49,7 @@ class Figure(ABC):
         if border_height is None and self.border_height is True:
             border_height = Config.minimal_border_width
         pd()
-        self._draw(width - (border_width or 0), height - (border_height or 0))
+        self._draw(round(width - (border_width or 0)), round(height - (border_height or 0)))
         pu()
 
     def undo(
@@ -56,21 +59,17 @@ class Figure(ABC):
         border_width: int = None,
         border_height: int = None,
     ):
-        from figures.Emphasize import Emphasize
-
-        color("white")
-        if isinstance(self, Emphasize):
-            prev_color = self.color
-            self.color = "white"
+        c("white")
+        prev_color = self.color
+        self.color = "white"
         self.draw(
             width=width,
             height=height,
             border_width=border_width,
             border_height=border_height,
         )
-        color(Config.color)
-        if isinstance(self, Emphasize):
-            self.color = prev_color
+        c(Config.color)
+        self.color = prev_color
 
     def undo_no_record(
         self,

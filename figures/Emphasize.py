@@ -1,4 +1,4 @@
-from turtle import color as c, width as w
+from turtle import color as c
 
 from Config import Config
 from figures.Figure import Figure
@@ -19,14 +19,33 @@ class Emphasize(Figure):
         height: int = None,
         border_width: int = None,
         border_height: int = None,
+        color: str = None,
     ):
-        self.x_coor = self.inner.x_coor - Config.line_width
-        self.y_coor = self.inner.y_coor + Config.line_width
-        self.width = self.inner.width
-        self.height = self.inner.height
-        w(1)
-        super().draw(width, height, border_width, border_height)
-        w(Config.line_width)
+        if color is None:
+            color = self.color
+        self.inner.draw(color=color)
+        # self.x_coor = self.inner.x_coor - Config.line_width
+        # self.y_coor = self.inner.y_coor + Config.line_width
+        # self.width = self.inner.width
+        # self.height = self.inner.height
+        # w(1)
+        # super().draw(width, height, border_width, border_height)
+        # w(Config.line_width)
+
+    def undo(
+        self,
+        width: int = None,
+        height: int = None,
+        border_width: int = None,
+        border_height: int = None,
+    ):
+        self.draw(
+            width=width,
+            height=height,
+            border_width=border_width,
+            border_height=border_height,
+            color=Config.color,
+        )
 
     def _draw(self, width: int, height: int):
         c(self.color)

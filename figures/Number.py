@@ -80,7 +80,7 @@ class Number(Figure, ABC):
         numerator_length = len(str(abs(value.numerator)))
         denominator_length = len(str(abs(value.denominator)))
         difference = abs(numerator_length - denominator_length)
-        blank_width = Config.default_width * difference / 2
+        blank_width = Config.default_width * difference // 2
         if numerator_length < denominator_length:
             numerator = Sequence(
                 *(
