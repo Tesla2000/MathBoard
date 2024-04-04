@@ -6,7 +6,7 @@ from turtle import width, speed
 
 
 class _VideoElements:
-    lesson_name = "Dodawanie_ułamków"
+    lesson_name = "Ułamki"
     script = f"{lesson_name}.py"
     final_video_name = (lesson_name + "_{}.mp4").format
 
@@ -24,8 +24,8 @@ class _AudioElements:
 class Config(_VideoElements, _AudioElements):
     base_language = "pl"
     languages = (
-        # "uk",
         "pl",
+        # "uk",
     )
     font_size = 12
     font_path = "DejaVuSans"
@@ -40,10 +40,12 @@ class Config(_VideoElements, _AudioElements):
     start_x = -640
     # start_x = -300
     start_y = 280
-    # debug = True
-    debug = False
+    debug = True
+    # debug = False
     api_forbidden = True
     # api_forbidden = False
+    # publish = True
+    publish = False
 
     root = Path(__file__).parent
     image_format = ".jpg"

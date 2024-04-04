@@ -20,7 +20,11 @@ _translator = deepl.Translator(Config.deepL_token)
 
 
 def translate(text: str) -> str:
+    if not text:
+        return text
     if Config.base_language != PassedVariables.language:
+        if Config.api_forbidden:
+            raise ValueError
         text = "\n".join(map(_translate_line, text.splitlines()))
     return text
 

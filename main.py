@@ -43,7 +43,8 @@ def main():
             PassedVariables.texts_to_translate[index] = translation
             generate_audio(translation)
         output_video_path = concat_videos()
-        upload_video(output_video_path, output_video_path.with_suffix('').name.replace('_', ' ').capitalize(), module.texts_to_translate[0])
+        if Config.publish:
+            upload_video(output_video_path, output_video_path.with_suffix('').name.replace('_', ' ').capitalize(), module.texts_to_translate[0])
         state_reset()
 
 

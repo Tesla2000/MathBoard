@@ -1,6 +1,7 @@
 import os
 import shutil
 from datetime import datetime
+from random import randint
 
 from moviepy.editor import ImageSequenceClip
 
@@ -10,13 +11,13 @@ from Config import Config
 def concat2video(delete_images: bool = True):
     images = list(map(str, sorted(Config.images.iterdir(), key=os.path.getmtime)))
     if not images:
-        images = list(map(str, sorted(Config.images.iterdir(), key=os.path.getmtime)))
+        images = list(map(str, sorted(Config.last_frames.iterdir(), key=os.path.getmtime)))
         if images:
-            images = 2 * [images[0]]
+            images = 2 * [images[-1]]
         else:
             images = 2 * [str(Config.first_frame)]
     clip = ImageSequenceClip(images, fps=Config.symbol_write_speed)
-    video_file_name = datetime.now().strftime("%Y%m%d%H%M%S")
+    video_file_name = datetime.now().strftime(f"%Y%m%d%H%M%S{randint(0, 10**12)}")
     output_video_path = Config.output_videos.joinpath(video_file_name).with_suffix(
         ".mp4"
     )

@@ -21,6 +21,7 @@ def save_screen(path: Path = None):
         for (x, y, text, font_size) in PassedVariables.texts:
             font = truetype(Config.font_path, font_size)
             draw.text((x, y), text, fill=Config.color, font=font, encoding="utf-8")
+        img = img.resize((960, 540))
         if path is None:
             img.save(Config.images / f"{_index}{Config.image_format}")
         else:

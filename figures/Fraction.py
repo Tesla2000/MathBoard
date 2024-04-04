@@ -1,6 +1,7 @@
 from Config import Config
 from figures import moveto
 from figures.Figure import Figure
+from figures.Sequence import Sequence
 from recording.record_turtle import pu, pd, fd, rt, lt
 
 
@@ -21,7 +22,10 @@ class Fraction(Figure):
     def _draw(self, width: int, height: int):
         self.numerator.x_coor = self.x_coor
         self.numerator.y_coor = self.y_coor
-        self.numerator.draw(width, int(height * self.numerator_height_factor))
+        if isinstance(self.numerator, Sequence):
+            self.numerator.draw(width + Config.minimal_border_width, int(height * self.numerator_height_factor))
+        else:
+            self.numerator.draw(width, int(height * self.numerator_height_factor))
         moveto(self.x_coor, self.y_coor)
         pu()
         rt(90)
@@ -33,6 +37,11 @@ class Fraction(Figure):
         self.denominator.y_coor = (
             self.y_coor - height // 2 - Config.minimal_border_width
         )
-        self.denominator.draw(
-            width, height - int(height * self.numerator_height_factor)
-        )
+        if isinstance(self.denominator, Sequence):
+            self.denominator.draw(
+                width + Config.minimal_border_width, height - int(height * self.numerator_height_factor)
+            )
+        else:
+            self.denominator.draw(
+                width, height - int(height * self.numerator_height_factor)
+            )

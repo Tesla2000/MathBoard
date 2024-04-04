@@ -17,5 +17,3 @@ class Six(Digit):
         fd(height // 2)
         lt(90)
         fd(width)
-        rt(90)
-        fd(height // 2)

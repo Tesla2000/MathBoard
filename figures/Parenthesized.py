@@ -26,6 +26,6 @@ class Parenthesized(Figure):
         fd(height)
         self.inner.x_coor = self.x_coor + Config.minimal_border_width
         self.inner.y_coor = self.y_coor - Config.minimal_border_width
-        self.inner.width = self.width - Config.minimal_border_width
-        self.inner.height = self.height - Config.minimal_border_width
+        self.inner.width = self.width - 2 * Config.minimal_border_width
+        self.inner.height = self.height - 2 * Config.minimal_border_width
         self.inner.draw()
