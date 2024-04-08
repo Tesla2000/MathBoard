@@ -15,8 +15,9 @@ class _VideoElements:
 class _AudioElements:
     similarity_boost = 1
     stability = 1
+    style = 0
     model_id = "eleven_multilingual_v1"
-    voice_id = "Mark"
+    voice_id = "2EiwWnXFnvU5JabPnv8n"
 
     model = "tts-1"
     voice = "alloy"

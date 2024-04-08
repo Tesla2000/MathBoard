@@ -2,6 +2,7 @@ import atexit
 import json
 import os
 import random
+from datetime import datetime
 from pathlib import Path
 
 import elevenlabs
@@ -18,7 +19,7 @@ def generate_audio(text_to_translate: str) -> Path:
         speech_file_path = Path(audio_paths[normalized_text])
     else:
         speech_file_path = Config.output_audios.joinpath(
-            str(random.randint(0, 1_000_000_000))
+            datetime.now().strftime(f"%Y%m%d%H%M%S%f")
         ).with_suffix(".mp3")
     if speech_file_path.exists():
         return speech_file_path
@@ -32,7 +33,7 @@ def generate_audio(text_to_translate: str) -> Path:
         "voice_settings": {
             "similarity_boost": Config.similarity_boost,
             "stability": Config.stability,
-            "style": 0.5,
+            "style": Config.style,
             "use_speaker_boost": True,
         },
     }
