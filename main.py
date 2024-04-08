@@ -1,4 +1,5 @@
 import shutil
+from itertools import product
 from time import sleep
 
 from upload_video import upload_video
@@ -13,11 +14,11 @@ from translation import translate
 
 
 def main():
-    for language in Config.languages:
+    for lesson_name, language in product(Config.lesson_names, Config.languages):
         PassedVariables.language = language
         module = getattr(
-            __import__(f"{Config.scripts_package.name}.{Config.lesson_name}"),
-            Config.lesson_name,
+            __import__(f"{Config.scripts_package.name}.{lesson_name}"),
+            lesson_name,
         )
         action_spaces = module.action_spaces
         PassedVariables.texts_to_translate = list(module.texts_to_translate)
@@ -42,7 +43,7 @@ def main():
             translation = translate(text_to_translate)
             PassedVariables.texts_to_translate[index] = translation
             generate_audio(translation)
-        output_video_path = concat_videos()
+        output_video_path = concat_videos(lesson_name)
         if Config.publish:
             upload_video(output_video_path, output_video_path.with_suffix('').name.replace('_', ' ').capitalize(), module.texts_to_translate[0])
         state_reset()

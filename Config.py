@@ -6,25 +6,28 @@ from turtle import width, speed
 
 
 class _VideoElements:
-    lesson_name = "Ułamki"
-    script = f"{lesson_name}.py"
-    final_video_name = (lesson_name + "_{}.mp4").format
+    lesson_names = (
+        "Dodawanie_ułamków",
+    )
+    final_video_name = "{}_{}.mp4".format
 
 
 class _AudioElements:
-    similarity_boost = .9
-    stability = .9
-    model_id = "eleven_multilingual_v2"
-    voice_id = "2EiwWnXFnvU5JabPnv8n"
+    similarity_boost = 1
+    stability = 1
+    model_id = "eleven_multilingual_v1"
+    voice_id = "Mark"
 
     model = "tts-1"
     voice = "alloy"
 
 
 class Config(_VideoElements, _AudioElements):
+    default_english = "en-gb"
     base_language = "pl"
     languages = (
-        "pl",
+        "en",
+        # "pl",
         # "uk",
     )
     font_size = 12
@@ -40,8 +43,8 @@ class Config(_VideoElements, _AudioElements):
     start_x = -640
     # start_x = -300
     start_y = 280
-    debug = True
-    # debug = False
+    # debug = True
+    debug = False
     api_forbidden = True
     # api_forbidden = False
     # publish = True

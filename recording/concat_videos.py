@@ -13,7 +13,7 @@ from audio.generate_audio import audio_paths
 from recording.create_video_from_frame import create_video_from_frame
 
 
-def concat_videos(delete_images: bool = True) -> Path:
+def concat_videos(lesson_name: str, delete_images: bool = True) -> Path:
     video_clips = list(
         map(
             VideoFileClip,
@@ -61,7 +61,7 @@ def concat_videos(delete_images: bool = True) -> Path:
             )
     final_clip = concatenate_videoclips(final_clips)
     output_file_path = Config.final_videos.joinpath(
-        Config.final_video_name(PassedVariables.language)
+        Config.final_video_name(lesson_name, PassedVariables.language)
     )
     final_clip.write_videofile(
         str(output_file_path),

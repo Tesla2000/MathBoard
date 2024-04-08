@@ -23,8 +23,6 @@ def translate(text: str) -> str:
     if not text:
         return text
     if Config.base_language != PassedVariables.language:
-        if Config.api_forbidden:
-            raise ValueError
         text = "\n".join(map(_translate_line, text.splitlines()))
     return text
 
@@ -40,7 +38,7 @@ def _translate_line(line: str) -> str:
         if Config.debug or Config.api_forbidden:
             raise ValueError
         translated = _translator.translate_text(
-            line, target_lang=PassedVariables.language, source_lang=Config.base_language
+            line, target_lang={"en": Config.default_english}.get(PassedVariables.language.lower(), PassedVariables.language), source_lang=Config.base_language
         ).text
         translated_texts[PassedVariables.language][line] = translated
     return prefix + translated_texts[PassedVariables.language][line]
