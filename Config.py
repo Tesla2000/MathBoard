@@ -2,12 +2,18 @@ import os
 import re
 import shutil
 from pathlib import Path
-from turtle import width, speed
+from turtle import width, speed, hideturtle
 
 
 class _VideoElements:
     lesson_names = (
-        "Dodawanie_ułamków",
+        # "Znajdowanie_liczby_niewymiernej",
+        # "Mnożenie_ułamków",
+        "Dzielenie_ułamków",
+        # "Dodawanie_ułamków",
+        # "Odejmowanie_ułamków",
+        # "Skracanie_ułamków",
+        # "Ułamki",
     )
     final_video_name = "{}_{}.mp4".format
 
@@ -28,8 +34,8 @@ class Config(_VideoElements, _AudioElements):
     base_language = "pl"
     languages = (
         "en",
-        # "pl",
-        # "uk",
+        "pl",
+        "uk",
     )
     font_size = 12
     font_path = "DejaVuSans"
@@ -41,6 +47,7 @@ class Config(_VideoElements, _AudioElements):
     line_width = 3
     width(line_width)
     speed(0)
+    hideturtle()
     start_x = -640
     # start_x = -300
     start_y = 280
@@ -65,7 +72,7 @@ class Config(_VideoElements, _AudioElements):
     temporary_files = root / "temporary_files"
     temporary_picture = temporary_files / ".ps"
     temp_translations = temporary_files / "translations.json"
-    first_frame = temporary_files / f"first_frame{image_format}"
+    first_frames = temporary_files / "first_frames"
     temp_filename = str(temporary_files / ".mp4")
     temp_audio_paths = temporary_files / "audio_paths.json"
 
@@ -82,13 +89,16 @@ class Config(_VideoElements, _AudioElements):
     output_videos.mkdir(exist_ok=True)
     images.mkdir(exist_ok=True)
     last_frames.mkdir(exist_ok=True)
+    first_frames.mkdir(exist_ok=True)
     shutil.rmtree(output_videos)
     shutil.rmtree(images)
     shutil.rmtree(last_frames)
+    shutil.rmtree(first_frames)
     final_videos.mkdir(exist_ok=True)
     output_videos.mkdir(exist_ok=True)
     output_audios.mkdir(exist_ok=True)
     last_frames.mkdir(exist_ok=True)
+    first_frames.mkdir(exist_ok=True)
     images.mkdir(exist_ok=True)
     translations.mkdir(exist_ok=True)
 

@@ -1,3 +1,4 @@
+from collections import defaultdict
 from typing import Callable
 
 from Config import Config
@@ -30,22 +31,23 @@ class Text(Figure):
         border_height: int = None,
         color: str = None,
     ):
-        text = translate(self.text)
-        PassedVariables.texts.append(
-            (
-                self.x_coor - Config.start_x,
-                Config.start_y - self.y_coor,
-                text,
-                self.font_size,
+        for language in Config.languages:
+            text = translate(self.text, language)
+            PassedVariables.texts[language].append(
+                (
+                    self.x_coor - Config.start_x,
+                    Config.start_y - self.y_coor,
+                    text,
+                    self.font_size,
+                )
             )
-        )
 
     def gen_add_text(self, text: str) -> Callable:
         return lambda: setattr(self, "text", text)
 
     @staticmethod
     def clear():
-        PassedVariables.texts = []
+        PassedVariables.texts = defaultdict(list)
 
     def _draw(self, width: int, height: int):
         pass

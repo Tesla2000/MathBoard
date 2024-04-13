@@ -1,9 +1,10 @@
 import atexit
 import json
 import os
-import random
+import warnings
 from datetime import datetime
 from pathlib import Path
+from time import sleep
 
 import elevenlabs
 
@@ -41,9 +42,16 @@ def generate_audio(text_to_translate: str) -> Path:
         "Content-Type": "application/json",
         "xi-api-key": Config.elevenlabs_api_key,
     }
-    response = requests.request("POST", url, json=payload, headers=headers)
-    if response.status_code != 200:
-        raise ValueError(f"Response code {response.status_code}")
+    while True:
+        response = requests.request("POST", url, json=payload, headers=headers)
+        if response.status_code == 429:
+            sleep(5)
+            continue
+        if response.status_code < 200 or response.status_code > 299:
+            raise ValueError(f"Response code {response.status_code} {response.text=}")
+        if response.status_code != 200:
+            warnings.warn(f"Response code {response.status_code} {response.text=}")
+        break
     elevenlabs.save(response.content, speech_file_path)
     audio_paths[normalized_text] = str(speech_file_path)
     return speech_file_path
@@ -57,5 +65,3 @@ def saving_audio_paths():
     print("Saved.")
 
 
-if __name__ == "__main__":
-    generate_audio("Przeniesienie wykładnika z ułamka na licznik i mianownik.")

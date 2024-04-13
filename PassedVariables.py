@@ -1,16 +1,20 @@
+from collections import defaultdict
+
+
 class PassedVariables:
-    language = None
     texts_to_translate = list()
+    translations = list()
     record = False
     supress_recording = False
-    texts = []
+    texts = defaultdict(list)
 
     @classmethod
     def reset(cls):
         cls.texts_to_translate = list()
+        cls.translations = list()
         cls.record = False
         cls.supress_recording = False
-        cls.texts = []
+        cls.texts = defaultdict(list)
 
     @classmethod
     def turn_recording_on(cls):

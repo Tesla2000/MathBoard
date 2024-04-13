@@ -3,11 +3,11 @@ import json
 import os
 import re
 from collections import defaultdict
+from functools import partial
 
 import deepl
 
 from Config import Config
-from PassedVariables import PassedVariables
 
 translated_texts = defaultdict(
     dict,
@@ -19,29 +19,29 @@ translated_texts = defaultdict(
 _translator = deepl.Translator(Config.deepL_token)
 
 
-def translate(text: str) -> str:
+def translate(text: str, language: str) -> str:
     if not text:
         return text
-    if Config.base_language != PassedVariables.language:
-        text = "\n".join(map(_translate_line, text.splitlines()))
+    if Config.base_language != language:
+        text = "\n".join(map(partial(_translate_line, language=language), text.splitlines()))
     return text
 
 
-def _translate_line(line: str) -> str:
+def _translate_line(line: str, language: str) -> str:
     prefix = re.findall(r"^[.\d> ]+", line)
     if prefix:
         prefix = prefix[0]
     else:
         prefix = ""
     line = re.sub(r"^[.\d> ]+", "", line)
-    if line not in translated_texts[PassedVariables.language]:
+    if line not in translated_texts[language]:
         if Config.debug or Config.api_forbidden:
             raise ValueError
         translated = _translator.translate_text(
-            line, target_lang={"en": Config.default_english}.get(PassedVariables.language.lower(), PassedVariables.language), source_lang=Config.base_language
+            line, target_lang={"en": Config.default_english}.get(language.lower(), language), source_lang=Config.base_language
         ).text
-        translated_texts[PassedVariables.language][line] = translated
-    return prefix + translated_texts[PassedVariables.language][line]
+        translated_texts[language][line] = translated
+    return prefix + translated_texts[language][line]
 
 
 @atexit.register

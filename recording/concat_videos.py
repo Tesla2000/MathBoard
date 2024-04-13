@@ -1,5 +1,4 @@
 import os
-import shutil
 from itertools import zip_longest, chain, repeat, islice
 from pathlib import Path
 
@@ -8,20 +7,19 @@ from moviepy.video.compositing.concatenate import concatenate_videoclips
 from moviepy.video.io.VideoFileClip import VideoFileClip
 
 from Config import Config
-from PassedVariables import PassedVariables
 from audio.generate_audio import audio_paths
 from recording.create_video_from_frame import create_video_from_frame
 
 
-def concat_videos(lesson_name: str, delete_images: bool = True) -> Path:
+def concat_videos(lesson_name: str, language: str, translations: list[str]) -> Path:
     video_clips = list(
         map(
             VideoFileClip,
-            sorted(map(str, Config.output_videos.iterdir()), key=os.path.getctime),
+            sorted(set(map(str, Config.output_videos.glob(f"*{language}*"))), key=os.path.getctime),
         )
     )
-    pause_frames = [str(Config.first_frame)] + list(
-        sorted(map(str, Config.last_frames.iterdir()), key=os.path.getctime)
+    pause_frames = [str(Config.first_frames.joinpath(language).with_suffix(Config.image_format))] + list(
+        sorted(set(map(str, Config.last_frames.glob(f"*{language}*"))), key=os.path.getctime)
     )
     audio_clips = list(
         map(
@@ -32,7 +30,7 @@ def concat_videos(lesson_name: str, delete_images: bool = True) -> Path:
                     audio_paths.get,
                     map(
                         Config.audio_name_normalization,
-                        PassedVariables.texts_to_translate,
+                        translations,
                     ),
                 ),
             ),
@@ -61,7 +59,7 @@ def concat_videos(lesson_name: str, delete_images: bool = True) -> Path:
             )
     final_clip = concatenate_videoclips(final_clips)
     output_file_path = Config.final_videos.joinpath(
-        Config.final_video_name(lesson_name, PassedVariables.language)
+        Config.final_video_name(lesson_name, language)
     )
     final_clip.write_videofile(
         str(output_file_path),
@@ -73,13 +71,4 @@ def concat_videos(lesson_name: str, delete_images: bool = True) -> Path:
         clip.close()
     for clip in audio_clips:
         clip.close()
-    if delete_images:
-        shutil.rmtree(Config.output_videos)
-        shutil.rmtree(Config.last_frames)
-        Config.output_videos.mkdir()
-        Config.last_frames.mkdir()
     return output_file_path
-
-
-if __name__ == "__main__":
-    concat_videos(False)

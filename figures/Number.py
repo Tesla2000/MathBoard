@@ -23,8 +23,6 @@ def _number_to_digits(number: int) -> list[int]:
 class Number(Figure, ABC):
     @classmethod
     def from_int(cls, value: int, *args, **kwargs) -> Digit | Sequence:
-        if value == 18:
-            pass
         if value in range(10):
             return next(
                 number for number in Digit.__subclasses__() if number.value == value
