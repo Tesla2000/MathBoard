@@ -18,7 +18,7 @@ def concat_videos(lesson_name: str, language: str, translations: list[str]) -> P
             sorted(set(map(str, Config.output_videos.glob(f"*{language}*"))), key=os.path.getctime),
         )
     )
-    pause_frames = [str(Config.first_frames.joinpath(language).with_suffix(Config.image_format))] + list(
+    pause_frames = [str(next(Config.first_frames.glob(f"*{language}*")).with_suffix(Config.image_format))] + list(
         sorted(set(map(str, Config.last_frames.glob(f"*{language}*"))), key=os.path.getctime)
     )
     audio_clips = list(

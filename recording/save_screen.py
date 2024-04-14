@@ -27,7 +27,7 @@ def save_screen(path: Path = None):
                 draw.text((x, y), text, fill=Config.color, font=font, encoding="utf-8")
             img = img.resize((960, 540))
             if path is None:
-                img.save(Config.images / f"{_index}{language}{Config.image_format}")
+                img.save(Config.images / f"{_index}{language if language else "".join(Config.languages)}{Config.image_format}")
             else:
                 img.save(path)
     _index += 1

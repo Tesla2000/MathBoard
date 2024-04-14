@@ -7,9 +7,9 @@ from turtle import width, speed, hideturtle
 
 class _VideoElements:
     lesson_names = (
-        # "Znajdowanie_liczby_niewymiernej",
+        "Znajdowanie_liczby_niewymiernej",
         # "Mnożenie_ułamków",
-        "Dzielenie_ułamków",
+        # "Dzielenie_ułamków",
         # "Dodawanie_ułamków",
         # "Odejmowanie_ułamków",
         # "Skracanie_ułamków",

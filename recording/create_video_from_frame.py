@@ -17,7 +17,3 @@ def create_video_from_frame(
     if audio_clip is not None:
         return video_clip.set_audio(audio_clip)
     return video_clip
-
-
-if __name__ == "__main__":
-    create_video_from_frame(str(next(Config.last_frames.iterdir())), 5)

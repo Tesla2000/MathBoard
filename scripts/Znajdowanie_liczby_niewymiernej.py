@@ -7,7 +7,6 @@ from figures.Number import Number
 from figures.Parenthesized import Parenthesized
 from figures.RaiseToPower import RaiseToPower
 from figures.Root import Root
-from fractions import Fraction as mathFraction
 from figures.Text import Text
 
 texts_to_translate = (
@@ -19,6 +18,48 @@ texts_to_translate = (
     "Jak widać, w tym wypadku wykładnik trzy drugie jest nieskracalny i, co za tym idzie, nie jest liczbą całkowitą. Zatem liczba jest niewymierna.",
     "Dziękuję za uwagę."
 )
+# texts = {
+#     1: "Upraszczanie potęg i pierwiastków:"
+#        "\n>>> 1. Zamiana liczb złożonych na ich czynniki pierwsze."
+#        "\n2. Przekształcenie pierwiastków na potęgi."
+#        "\n3. Jeśli występują ułamki dziesiętne, przekształć je na zwykłe."
+#        "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
+#        "\n5. Jeśli występują ułamki podniesione do potęgi, przenieś wykładnik ułamka do wykładnika licznika i mianownika."
+#        "\n6. Jeśli można wykonać mnożenie wykładników, pomnóż mianowniki."
+#        "\n7. Jeśli ułamki zwykłe można skrócić, skróć je.",
+#     2: "Upraszczanie potęg i pierwiastków:"
+#        "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
+#        "\n>>> 2. Przekształcenie pierwiastków na potęgi."
+#        "\n3. Jeśli występują ułamki dziesiętne, przekształć je na zwykłe."
+#        "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
+#        "\n5. Jeśli występują ułamki podniesione do potęgi, przenieś wykładnik ułamka do wykładnika licznika i mianownika."
+#        "\n6. Jeśli można wykonać mnożenie wykładników, pomnóż mianowniki."
+#        "\n7. Jeśli ułamki zwykłe można skrócić, skróć je.",
+#     3: "Upraszczanie potęg i pierwiastków:"
+#        "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
+#        "\n2. Przekształcenie pierwiastków na potęgi."
+#        "\n3. Jeśli występują ułamki dziesiętne, przekształć je na zwykłe."
+#        "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
+#        "\n>>> 5. Jeśli występują ułamki podniesione do potęgi, przenieś wykładnik ułamka do wykładnika licznika i mianownika."
+#        "\n6. Jeśli można wykonać mnożenie wykładników, pomnóż mianowniki."
+#        "\n7. Jeśli ułamki zwykłe można skrócić, skróć je.",
+#     4: "Upraszczanie potęg i pierwiastków:"
+#        "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
+#        "\n2. Przekształcenie pierwiastków na potęgi."
+#        "\n3. Jeśli występują ułamki dziesiętne, przekształć je na zwykłe."
+#        "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
+#        "\n5. Jeśli występują ułamki podniesione do potęgi, przenieś wykładnik ułamka do wykładnika licznika i mianownika."
+#        "\n>>> 6. Jeśli można wykonać mnożenie wykładników, pomnóż mianowniki."
+#        "\n7. Jeśli ułamki zwykłe można skrócić, skróć je.",
+#     5: "Upraszczanie potęg i pierwiastków:"
+#        "\n1. Zamiana liczb złożonych na ich czynniki pierwsze."
+#        "\n2. Przekształcenie pierwiastków na potęgi."
+#        "\n3. Jeśli występują ułamki dziesiętne, przekształć je na zwykłe."
+#        "\n4. Ułamki zwykłe zapisz w formie ułamków niewłaściwych."
+#        "\n5. Jeśli występują ułamki podniesione do potęgi, przenieś wykładnik ułamka do wykładnika licznika i mianownika."
+#        "\n6. Jeśli można wykonać mnożenie wykładników, pomnóż mianowniki."
+#        "\n>>> 7. Jeśli ułamki zwykłe można skrócić, skróć je.",
+# }
 texts = {
     1: "Upraszczanie potęg i pierwiastków:"
        "\n>>> 1. Zamiana liczb złożonych na ich czynniki pierwsze."
@@ -66,7 +107,7 @@ text = Text(text=texts[1])
 figures = [
     [
         Root(
-            Number.from_fraction(mathFraction(8, 49)),
+            Number.from_fraction(8, 49),
             width=200,
             height=row_height,
         ),
